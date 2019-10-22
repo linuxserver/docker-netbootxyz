@@ -1,0 +1,27 @@
+---
+
+# jenkins variables
+project_name: docker-netbootxyz
+external_type: na
+custom_version_command: "curl -sL https://boot.netboot.xyz/ipxe/netboot.xyz-sha256-checksums.txt | grep 'netboot.xyz.kpxe' | cut -c1-8"
+release_type: stable
+release_tag: latest
+ls_branch: master
+repo_vars:
+  - CONTAINER_NAME = 'netbootxyz'
+  - BUILD_VERSION_ARG = 'NETBOOTXYZ_SHA'
+  - LS_USER = 'linuxserver'
+  - LS_REPO = 'docker-netbootxyz'
+  - DOCKERHUB_IMAGE = 'linuxserver/netbootxyz'
+  - DEV_DOCKERHUB_IMAGE = 'lsiodev/netbootxyz'
+  - PR_DOCKERHUB_IMAGE = 'lspipepr/netbootxyz'
+  - DIST_IMAGE = 'alpine'
+  - MULTIARCH='true'
+  - CI='true'
+  - CI_WEB='false'
+  - CI_PORT='69'
+  - CI_SSL='false'
+  - CI_DELAY='60'
+  - CI_DOCKERENV='TZ=US/Pacific'
+  - CI_AUTH='user:password'
+  - CI_WEBPATH=''
