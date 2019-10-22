@@ -1,0 +1,66 @@
+---
+
+# project information
+project_name: netbootxyz
+project_url: "https://netboot.xyz"
+project_logo: "https://netboot.xyz/images/netboot.xyz.gif"
+project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is a way to PXE boot various operating system installers or utilities from one place within the BIOS without the need of having to go retrieve the media to run the tool. iPXE is used to provide a user friendly menu from within the BIOS that lets you easily choose the operating system you want along with any specific types of versions or bootable flags."
+project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
+
+# supported architectures
+available_architectures:
+  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
+  - { arch: "{{ arch_armhf }}", tag: "arm32v7-latest"}
+
+# container parameters
+common_param_env_vars_enabled: false
+param_container_name: "{{ project_name }}"
+param_usage_include_vols: false
+param_usage_include_ports: true
+param_ports:
+  - { external_port: "69", internal_port: "69/udp", port_desc: "TFTP Port." }
+param_usage_include_env: false
+
+# application setup block
+app_setup_block_enabled: true
+app_setup_block: |
+  To use this image you need an existing DHCP server where you can set this TFTP server as your DHCP boot destination. This image does not contain a DHCP server nor do we aim to support one in the future. This is simply a TFTP server hosting the latest IPXE kernel builds from [netboot.xyz]({{ project_url }}). If you are interested in their project and lack the ability to setup a DHCP server to boot this payload they also have USB stick images you can use available on their [downloads page]({{ project_url }}/downloads/).
+  
+  ### Router Setup Examples
+
+  #### PFSense
+  Services -> DHCP Server
+  Set both the option for "TFTP Server" and the options under the Advanced "Network Booting" section. 
+  * check enable
+  * Next server- IP used for TFTP Server
+  * Default BIOS file name- `netboot.xyz.kpxe`
+  
+  #### DD-WRT
+  Administration->Services -> Additional DNSMasq Options
+  Set the following line: 
+  ```
+  dhcp-boot=netboot.xyz.kpxe,,YOURSERVERIP
+  ```
+  
+  #### Tomato
+  Advanced -> DHCP/DNS -> Dnsmasq Custom configuration
+  Set the following line: 
+  ```
+  dhcp-boot=netboot.xyz.kpxe,,YOURSERVERIP
+  ```
+  
+  #### OpenWRT
+  ```
+  uci set dhcp.@dnsmasq[0].dhcp_boot=netboot.xyz.kpxe,,YOURSERVERIP
+  uci commit
+  /etc/init.d/dnsmasq restart
+  ```
+  
+  Anything else from a router standpoint is a crapshoot for supporting Dnsmasq options or proprietary PXE boot options, check Google for support (try your exact router model number with 'pxe boot' or look into setting up your own DHCP server in Linux.
+  
+  This image also contains `netboot.xyz.efi` which can be used to boot using UEFI network boot. The UEFI boot and menu will have limited functionality if you choose to use it. 
+
+# changelog
+changelogs:
+  - { date: "22.10.19:", desc: "Initial release." }
