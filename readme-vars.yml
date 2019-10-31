@@ -38,9 +38,15 @@ app_setup_block: |
   * Default BIOS file name- `netboot.xyz.kpxe`
   * UEFI 32 bit file name- `netboot.xyz.efi`
   * UEFI 64 bit file name- `netboot.xyz.efi`
+
+  #### Unifi Security Gateway (with the controller)
+  Networks -> LAN (or the network you want to boot from) -> ADVANCED DHCP OPTIONS
+  * tick Enable network boot
+  * Server-  YOURSERVERIP
+  * Filename- `netboot.xyz.kpxe`
   
   #### DD-WRT
-  Administration->Services -> Additional DNSMasq Options
+  Administration -> Services -> Additional DNSMasq Options
   Set the following lines: 
   ```
   dhcp-match=set:bios,60,PXEClient:Arch:00000
