@@ -104,12 +104,22 @@ To use this image you need an existing DHCP server where you can set this TFTP s
 
 ### Router Setup Examples
 
-#### PFSense/OPNsense
+#### PFSense
 Services -> DHCP Server
 
 Set both the option for "TFTP Server" and the options under the Advanced "Network Booting" section. 
 * check enable
 * Next server- IP used for TFTP Server
+* Default BIOS file name- `netboot.xyz.kpxe`
+* UEFI 32 bit file name- `netboot.xyz.efi`
+* UEFI 64 bit file name- `netboot.xyz.efi`
+
+#### OPNsense
+Services -> DHCP Server
+
+Under the Advanced "Network Booting" section. 
+* check enable
+* Next server- IP of docker host
 * Default BIOS file name- `netboot.xyz.kpxe`
 * UEFI 32 bit file name- `netboot.xyz.efi`
 * UEFI 64 bit file name- `netboot.xyz.efi`
