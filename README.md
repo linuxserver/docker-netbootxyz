@@ -246,4 +246,5 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **10.12.19:** - Adding tftp branch to provide tftp only option to latest users.
 * **22.10.19:** - Initial release.

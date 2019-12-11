@@ -97,4 +97,5 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "10.12.19:", desc: "Adding tftp branch to provide tftp only option to latest users." }
   - { date: "22.10.19:", desc: "Initial release." }

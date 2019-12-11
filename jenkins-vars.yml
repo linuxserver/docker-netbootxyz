@@ -2,14 +2,13 @@
 
 # jenkins variables
 project_name: docker-netbootxyz
-external_type: na
-custom_version_command: "curl -sL https://boot.netboot.xyz/ipxe/netboot.xyz-sha256-checksums.txt | grep 'netboot.xyz.kpxe' | cut -c1-8"
-release_type: stable
-release_tag: latest
-ls_branch: master
+external_type: github_stable
+release_type: pre-release
+release_tag: tftp
+ls_branch: tftp
 repo_vars:
   - CONTAINER_NAME = 'netbootxyz'
-  - BUILD_VERSION_ARG = 'NETBOOTXYZ_SHA'
+  - BUILD_VERSION_ARG = 'NETBOOTXYZ_RELEASE'
   - LS_USER = 'linuxserver'
   - LS_REPO = 'docker-netbootxyz'
   - DOCKERHUB_IMAGE = 'linuxserver/netbootxyz'
