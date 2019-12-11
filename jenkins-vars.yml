@@ -7,6 +7,9 @@ release_type: pre-release
 release_tag: tftp
 ls_branch: tftp
 repo_vars:
+  - EXT_GIT_BRANCH = 'master'
+  - EXT_USER = 'netbootxyz'
+  - EXT_REPO = 'netboot.xyz'
   - CONTAINER_NAME = 'netbootxyz'
   - BUILD_VERSION_ARG = 'NETBOOTXYZ_RELEASE'
   - LS_USER = 'linuxserver'
