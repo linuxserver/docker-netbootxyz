@@ -54,6 +54,14 @@ The architectures supported by this image are:
 | arm64 | arm64v8-latest |
 | armhf | arm32v7-latest |
 
+## Version Tags
+
+This image provides various versions that are available via tags. `latest` tag usually provides the latest stable version. Others are considered under development and caution must be exercised when using them.
+
+| Tag | Description |
+| :----: | --- |
+| latest | Web application for full self hosting |
+| tftp | TFTP server only with NETBOOT.XYZ boot files |
 
 ## Usage
 
@@ -64,7 +72,14 @@ Here are some example snippets to help you get started creating a container.
 ```
 docker create \
   --name=netbootxyz \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e MENU_VERSION=1.9.9 `#optional` \
+  -p 3000:3000 \
   -p 69:69/udp \
+  -p 8080:80 `#optional` \
+  -v /path/to/config:/config \
+  -v /path/to/assets:/assets `#optional` \
   --restart unless-stopped \
   linuxserver/netbootxyz
 ```
@@ -81,8 +96,17 @@ services:
   netbootxyz:
     image: linuxserver/netbootxyz
     container_name: netbootxyz
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MENU_VERSION=1.9.9 #optional
+    volumes:
+      - /path/to/config:/config
+      - /path/to/assets:/assets #optional
     ports:
+      - 3000:3000
       - 69:69/udp
+      - 8080:80 #optional
     restart: unless-stopped
 ```
 
@@ -92,7 +116,14 @@ Container images are configured using parameters passed at runtime (such as thos
 
 | Parameter | Function |
 | :----: | --- |
+| `-p 3000` | Web configuration interface. |
 | `-p 69/udp` | TFTP Port. |
+| `-p 80` | NGINX server for hosting assets. |
+| `-e PUID=1000` | for UserID - see below for explanation |
+| `-e PGID=1000` | for GroupID - see below for explanation |
+| `-e MENU_VERSION=1.9.9` | Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest) |
+| `-v /config` | Storage for boot menu files and web application config |
+| `-v /assets` | Storage for NETBOOT.XYZ bootable assets (live CDs and other files) |
 
 ## Environment variables from files (Docker secrets)
 
@@ -105,6 +136,19 @@ As an example:
 ```
 
 Will set the environment variable `PASSWORD` based on the contents of the `/run/secrets/mysecretpassword` file.
+
+## User / Group Identifiers
+
+When using volumes (`-v` flags) permissions issues can arise between the host OS and the container, we avoid this issue by allowing you to specify the user `PUID` and group `PGID`.
+
+Ensure any volume directories on the host are owned by the same user you specify and any permissions issues will vanish like magic.
+
+In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as below:
+
+```
+  $ id username
+    uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
+```
 
 
 &nbsp;
@@ -246,4 +290,6 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **13.12.19:** - Swapping latest tag over to webapp stack for management.
+* **10.12.19:** - Adding tftp branch to provide tftp only option to latest users.
 * **22.10.19:** - Initial release.
