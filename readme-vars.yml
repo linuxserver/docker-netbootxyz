@@ -13,14 +13,34 @@ available_architectures:
   - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
   - { arch: "{{ arch_armhf }}", tag: "arm32v7-latest"}
 
+# development version
+development_versions: true
+development_versions_items:
+  - { tag: "latest", desc: "Web application for full self hosting" }
+  - { tag: "tftp", desc: "TFTP server only with NETBOOT.XYZ boot files" }
+
 # container parameters
-common_param_env_vars_enabled: false
+common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
-param_usage_include_vols: false
+param_usage_include_vols: true
+param_volumes:
+  - { vol_path: "/config", vol_host_path: "/path/to/config", desc: "Storage for boot menu files and web application config" }
 param_usage_include_ports: true
 param_ports:
+  - { external_port: "3000", internal_port: "3000", port_desc: "Web configuration interface." }
   - { external_port: "69", internal_port: "69/udp", port_desc: "TFTP Port." }
 param_usage_include_env: false
+
+# optional env variables
+opt_param_usage_include_env: true
+opt_param_env_vars:
+  - { env_var: "MENU_VERSION", env_value: "1.9.9", desc: "Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest)"}
+opt_param_usage_include_ports: true
+opt_param_ports:
+  - { external_port: "8080", internal_port: "80", port_desc: "NGINX server for hosting assets." }
+opt_param_usage_include_vols: true
+opt_param_volumes:
+  - { vol_path: "/assets", vol_host_path: "/path/to/assets", desc: "Storage for NETBOOT.XYZ bootable assets (live CDs and other files)" }
 
 # application setup block
 app_setup_block_enabled: true
@@ -97,4 +117,6 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "13.12.19:", desc: "Swapping latest tag over to webapp stack for management." }
+  - { date: "10.12.19:", desc: "Adding tftp branch to provide tftp only option to latest users." }
   - { date: "22.10.19:", desc: "Initial release." }

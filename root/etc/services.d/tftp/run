@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv bash
 
 /usr/sbin/in.tftpd \
-	--foreground --listen --user abc --secure /config
+	--foreground --listen --user abc --secure /config/menus
