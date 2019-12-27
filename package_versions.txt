@@ -12,10 +12,10 @@ jq-1.6-r0
 libacl-2.2.53-r0
 libattr-2.4.48-r0
 libc-utils-0.7.2-r0
-libcrypto1.1-1.1.1d-r2
+libcrypto1.1-1.1.1d-r3
 libcurl-7.67.0-r0
 libgcc-9.2.0-r3
-libssl1.1-1.1.1d-r2
+libssl1.1-1.1.1d-r3
 libstdc++-9.2.0-r3
 libtls-standalone-2.9.1-r0
 libuv-1.34.0-r0
@@ -32,7 +32,7 @@ oniguruma-6.9.4-r0
 pcre-8.43-r0
 readline-8.0.1-r0
 scanelf-1.2.4-r0
-shadow-4.7-r0
+shadow-4.7-r1
 ssl_client-1.31.1-r8
 tftp-hpa-5.2-r2
 tzdata-2019c-r0
