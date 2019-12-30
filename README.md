@@ -190,10 +190,16 @@ Set the following lines:
 ```
 dhcp-match=set:bios,60,PXEClient:Arch:00000
 dhcp-boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP
-dhcp-match=set:efi32,60,PXEClient:Arch:00006
+dhcp-match=set:efi32,60,PXEClient:Arch:00002
 dhcp-boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP
-dhcp-match=set:efi64,60,PXEClient:Arch:00009
-dhcp-boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP 
+dhcp-match=set:efi32-1,60,PXEClient:Arch:00006
+dhcp-boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP
+dhcp-match=set:efi64,60,PXEClient:Arch:00007
+dhcp-boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP
+dhcp-match=set:efi64-1,60,PXEClient:Arch:00008
+dhcp-boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP
+dhcp-match=set:efi64-2,60,PXEClient:Arch:00009
+dhcp-boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP
 ```
 
 #### Tomato
@@ -202,20 +208,32 @@ Set the following lines:
 ```
 dhcp-match=set:bios,60,PXEClient:Arch:00000
 dhcp-boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP
-dhcp-match=set:efi32,60,PXEClient:Arch:00006
+dhcp-match=set:efi32,60,PXEClient:Arch:00002
 dhcp-boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP
-dhcp-match=set:efi64,60,PXEClient:Arch:00009
-dhcp-boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP 
+dhcp-match=set:efi32-1,60,PXEClient:Arch:00006
+dhcp-boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP
+dhcp-match=set:efi64,60,PXEClient:Arch:00007
+dhcp-boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP
+dhcp-match=set:efi64-1,60,PXEClient:Arch:00008
+dhcp-boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP
+dhcp-match=set:efi64-2,60,PXEClient:Arch:00009
+dhcp-boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP
 ```
 
 #### OpenWRT
 ```
 uci set dhcp.@dnsmasq[0].dhcp_match=set:bios,60,PXEClient:Arch:00000
 uci set dhcp.@dnsmasq[0].dhcp_boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP
-uci set dhcp.@dnsmasq[0].dhcp_match=set:efi32,60,PXEClient:Arch:00006
+uci set dhcp.@dnsmasq[0].dhcp_match=set:efi32,60,PXEClient:Arch:00002
 uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP
-uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64,60,PXEClient:Arch:00009
+uci set dhcp.@dnsmasq[0].dhcp_match=set:efi32-1,60,PXEClient:Arch:00006
+uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP
+uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64,60,PXEClient:Arch:00007
 uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP
+uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64-1,60,PXEClient:Arch:00008
+uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP
+uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64-2,60,PXEClient:Arch:00009
+uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP
 uci commit
 /etc/init.d/dnsmasq restart
 ```
