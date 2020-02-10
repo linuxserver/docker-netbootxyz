@@ -4,8 +4,8 @@ apk-tools-2.10.4-r3
 bash-5.0.11-r1
 busybox-1.31.1-r9
 c-ares-1.15.0-r0
-ca-certificates-20191127-r0
-ca-certificates-cacert-20191127-r0
+ca-certificates-20191127-r1
+ca-certificates-cacert-20191127-r1
 coreutils-8.31-r0
 curl-7.67.0-r0
 jq-1.6-r0
@@ -27,7 +27,7 @@ ncurses-terminfo-6.1_p20191130-r0
 ncurses-terminfo-base-6.1_p20191130-r0
 nghttp2-libs-1.40.0-r0
 nginx-1.16.1-r6
-nodejs-12.14.0-r0
+nodejs-12.15.0-r1
 oniguruma-6.9.4-r0
 pcre-8.43-r0
 readline-8.0.1-r0
