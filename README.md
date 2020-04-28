@@ -246,6 +246,15 @@ Anything else from a router standpoint is a crapshoot for supporting Dnsmasq opt
 
 This image also contains `netboot.xyz.efi` which can be used to boot using UEFI network boot. The UEFI boot and menu will have limited functionality if you choose to use it. 
 
+Microsoft Server DHCP
+
+* Run the DHCP program
+* Under Scope/Scope Options
+* check option 066 and enter the FQDN or IP of your TFTP boot server
+* check option 067 and enter one of the following bootfile names:
+     * Default BIOS file name- netboot.xyz.kpxe
+     * UEFI 32 bit file name- netboot.xyz.efi
+     * UEFI 64 bit file name- netboot.xyz.efi
 
 ## Docker Mods
 [![Docker Mods](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=mods&query=%24.mods%5B%27netbootxyz%27%5D.mod_count&url=https%3A%2F%2Fraw.githubusercontent.com%2Flinuxserver%2Fdocker-mods%2Fmaster%2Fmod-list.yml)](https://mods.linuxserver.io/?mod=netbootxyz "view available mods for this container.")
