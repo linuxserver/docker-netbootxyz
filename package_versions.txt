@@ -5,8 +5,8 @@ bash-5.0.17-r0
 brotli-libs-1.0.7-r5
 busybox-1.31.1-r16
 c-ares-1.16.1-r0
-ca-certificates-20191127-r2
-ca-certificates-bundle-20191127-r2
+ca-certificates-20191127-r3
+ca-certificates-bundle-20191127-r3
 coreutils-8.32-r0
 curl-7.69.1-r0
 jq-1.6-r1
