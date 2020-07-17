@@ -128,6 +128,15 @@ app_setup_block: |
   uci commit
   /etc/init.d/dnsmasq restart
   ```
+  #### Microsoft Server DHCP
+
+  * Run the DHCP program
+  * Under Scope/Scope Options
+  * check option 066 and enter the FQDN or IP of your TFTP boot server
+  * check option 067 and enter one of the following bootfile names:
+     * Default BIOS file name- netboot.xyz.kpxe
+     * UEFI 32 bit file name- netboot.xyz.efi
+     * UEFI 64 bit file name- netboot.xyz.efi
   
   Anything else from a router standpoint is a crapshoot for supporting Dnsmasq options or proprietary PXE boot options, check Google for support (try your exact router model number with 'pxe boot') or look into setting up your own DHCP server in Linux.
   
