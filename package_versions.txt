@@ -29,7 +29,7 @@ ncurses-libs-6.2_p20200523-r0
 ncurses-terminfo-base-6.2_p20200523-r0
 nghttp2-libs-1.41.0-r0
 nginx-1.18.0-r0
-nodejs-12.17.0-r0
+nodejs-12.18.3-r0
 oniguruma-6.9.5-r1
 pcre-8.44-r0
 procps-3.3.16-r0
