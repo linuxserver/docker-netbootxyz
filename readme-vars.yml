@@ -35,6 +35,7 @@ param_usage_include_env: false
 opt_param_usage_include_env: true
 opt_param_env_vars:
   - { env_var: "MENU_VERSION", env_value: "1.9.9", desc: "Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest)"}
+  - { env_var: "PORT_RANGE", env_value: "30000:30010", desc: "Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details)"}
 opt_param_usage_include_ports: true
 opt_param_ports:
   - { external_port: "8080", internal_port: "80", port_desc: "NGINX server for hosting assets." }
