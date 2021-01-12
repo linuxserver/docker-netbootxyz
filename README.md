@@ -84,6 +84,7 @@ services:
       - PUID=1000
       - PGID=1000
       - MENU_VERSION=1.9.9 #optional
+      - PORT_RANGE=30000:30010 #optional
     volumes:
       - /path/to/config:/config
       - /path/to/assets:/assets #optional
@@ -102,6 +103,7 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e MENU_VERSION=1.9.9 `#optional` \
+  -e PORT_RANGE=30000:30010 `#optional` \
   -p 3000:3000 \
   -p 69:69/udp \
   -p 8080:80 `#optional` \
@@ -124,6 +126,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e MENU_VERSION=1.9.9` | Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest) |
+| `-e PORT_RANGE=30000:30010` | Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details) |
 | `-v /config` | Storage for boot menu files and web application config |
 | `-v /assets` | Storage for NETBOOT.XYZ bootable assets (live CDs and other files) |
 
