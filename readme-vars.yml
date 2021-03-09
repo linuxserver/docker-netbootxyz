@@ -81,6 +81,7 @@ app_setup_block: |
   Connect via SSH
    ```
   configure
+  set service dhcp-server use-dnsmasq enable
   set service dns forwarding options "dhcp-match=set:bios,60,PXEClient:Arch:00000"
   set service dns forwarding options "dhcp-boot=tag:bios,netboot.xyz.kpxe,,SERVERIP"
   set service dns forwarding options "dhcp-match=set:efi32,60,PXEClient:Arch:00002"
