@@ -1,9 +1,9 @@
 alpine-baselayout-3.2.0-r7
 alpine-keys-2.2-r0
-apk-tools-2.10.5-r1
+apk-tools-2.10.5-r3
 bash-5.0.17-r0
 brotli-libs-1.0.9-r1
-busybox-1.31.1-r19
+busybox-1.31.1-r20
 c-ares-1.16.1-r0
 ca-certificates-20191127-r4
 ca-certificates-bundle-20191127-r4
@@ -35,7 +35,7 @@ procps-3.3.16-r0
 readline-8.0.4-r0
 scanelf-1.2.6-r0
 shadow-4.8.1-r0
-ssl_client-1.31.1-r19
+ssl_client-1.31.1-r20
 tftp-hpa-5.2-r2
 tzdata-2021a-r0
 xz-5.2.5-r0
