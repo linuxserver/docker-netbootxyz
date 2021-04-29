@@ -185,6 +185,7 @@ services:
       - PGID=1000
       - MENU_VERSION=1.9.9 #optional
       - PORT_RANGE=30000:30010 #optional
+      - SUBFOLDER=/ #optional
     volumes:
       - /path/to/config:/config
       - /path/to/assets:/assets #optional
@@ -204,6 +205,7 @@ docker run -d \
   -e PGID=1000 \
   -e MENU_VERSION=1.9.9 `#optional` \
   -e PORT_RANGE=30000:30010 `#optional` \
+  -e SUBFOLDER=/ `#optional` \
   -p 3000:3000 \
   -p 69:69/udp \
   -p 8080:80 `#optional` \
@@ -226,6 +228,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e MENU_VERSION=1.9.9` | Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest) |
 | `-e PORT_RANGE=30000:30010` | Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details) |
+| `-e SUBFOLDER=/` | Specify a sobfolder if running this behind a reverse proxy (IE /proxy/) |
 | `-v /config` | Storage for boot menu files and web application config |
 | `-v /assets` | Storage for NETBOOT.XYZ bootable assets (live CDs and other files) |
 
@@ -338,6 +341,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **29.04.21:** - Rebasing to alpine 3.13, add SUBFOLDER env variable.
 * **01.06.20:** - Rebasing to alpine 3.12.
 * **19.12.19:** - Rebasing to alpine 3.11.
 * **13.12.19:** - Swapping latest tag over to webapp stack for management.
