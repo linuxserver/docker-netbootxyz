@@ -98,6 +98,26 @@ Networks -> LAN (or the network you want to boot from) -> ADVANCED DHCP OPTIONS
 * Server-  YOURSERVERIP
 * Filename- `netboot.xyz.kpxe`
 
+#### EdgeOS/VyOS
+Connect via SSH
+ ```
+configure
+set service dhcp-server use-dnsmasq enable
+set service dns forwarding options "dhcp-match=set:bios,60,PXEClient:Arch:00000"
+set service dns forwarding options "dhcp-boot=tag:bios,netboot.xyz.kpxe,,SERVERIP"
+set service dns forwarding options "dhcp-match=set:efi32,60,PXEClient:Arch:00002"
+set service dns forwarding options "dhcp-boot=tag:efi32,netboot.xyz.efi,,SERVERIP"
+set service dns forwarding options "dhcp-match=set:efi32-1,60,PXEClient:Arch:00006"
+set service dns forwarding options "dhcp-boot=tag:efi32-1,netboot.xyz.efi,,SERVERIP"
+set service dns forwarding options "dhcp-match=set:efi64,60,PXEClient:Arch:00007"
+set service dns forwarding options "dhcp-boot=tag:efi64,netboot.xyz.efi,,SERVERIP"
+set service dns forwarding options "dhcp-match=set:efi64-1,60,PXEClient:Arch:00008"
+set service dns forwarding options "dhcp-boot=tag:efi64-1,netboot.xyz.efi,,SERVERIP"
+set service dns forwarding options "dhcp-match=set:efi64-2,60,PXEClient:Arch:00009"
+set service dns forwarding options "dhcp-boot=tag:efi64-2,netboot.xyz.efi,,SERVERIP"
+commit; save
+```
+
 #### DD-WRT
 Administration -> Services -> Additional DNSMasq Options
 Set the following lines: 
