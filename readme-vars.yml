@@ -36,6 +36,7 @@ opt_param_usage_include_env: true
 opt_param_env_vars:
   - { env_var: "MENU_VERSION", env_value: "1.9.9", desc: "Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest)"}
   - { env_var: "PORT_RANGE", env_value: "30000:30010", desc: "Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details)"}
+  - { env_var: "SUBFOLDER", env_value: "/", desc: "Specify a sobfolder if running this behind a reverse proxy (IE /proxy/)"}
 opt_param_usage_include_ports: true
 opt_param_ports:
   - { external_port: "8080", internal_port: "80", port_desc: "NGINX server for hosting assets." }
@@ -145,6 +146,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "29.04.21:", desc: "Rebasing to alpine 3.13, add SUBFOLDER env variable." }
   - { date: "01.06.20:", desc: "Rebasing to alpine 3.12." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
   - { date: "13.12.19:", desc: "Swapping latest tag over to webapp stack for management." }
