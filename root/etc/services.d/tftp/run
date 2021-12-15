@@ -1,4 +1,4 @@
 #!/usr/bin/with-contenv bash
 
-/usr/sbin/in.tftpd \
+exec /usr/sbin/in.tftpd \
 	--foreground --listen --user abc --secure ${PORT_RANGE:+--port-range $PORT_RANGE} /config/menus
