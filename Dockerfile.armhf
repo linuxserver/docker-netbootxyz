@@ -17,7 +17,7 @@ RUN \
 	jq \
 	nginx \
 	nodejs \
-	tftp-hpa && \
+	dnsmasq && \
  echo "**** install WebApp ****" && \
  if [ -z ${WEBAPP_VERSION+x} ]; then \
 	WEBAPP_VERSION=$(curl -sX GET "https://api.github.com/repos/netbootxyz/webapp/releases/latest" \

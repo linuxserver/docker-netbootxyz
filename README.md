@@ -203,7 +203,8 @@ services:
       - PUID=1000
       - PGID=1000
       - MENU_VERSION=1.9.9 #optional
-      - PORT_RANGE=30000:30010 #optional
+      - PORT_RANGE=30000,30010 #optional
+      - TFTP_SINGLE_PORT=1 #optional
       - SUBFOLDER=/ #optional
     volumes:
       - /path/to/config:/config
@@ -223,7 +224,8 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e MENU_VERSION=1.9.9 `#optional` \
-  -e PORT_RANGE=30000:30010 `#optional` \
+  -e PORT_RANGE=30000,30010 `#optional` \
+  -e TFTP_SINGLE_PORT=1 `#optional` \
   -e SUBFOLDER=/ `#optional` \
   -p 3000:3000 \
   -p 69:69/udp \
@@ -246,8 +248,9 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e MENU_VERSION=1.9.9` | Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest) |
-| `-e PORT_RANGE=30000:30010` | Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details) |
-| `-e SUBFOLDER=/` | Specify a sobfolder if running this behind a reverse proxy (IE /proxy/) |
+| `-e PORT_RANGE=30000,30010` | Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details) |
+| `-e TFTP_SINGLE_PORT=1` | Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details) |
+| `-e SUBFOLDER=/` | Specify the TFTP server should run in a single port mode (i.e. ephemeral ports are not used). This enables running the image in Kubernetes behind NAT based proxies. This env. variable is mutually exclusive with `PORT_RANGE`, only one of them can be specified. |
 | `-v /config` | Storage for boot menu files and web application config |
 | `-v /assets` | Storage for NETBOOT.XYZ bootable assets (live CDs and other files) |
 

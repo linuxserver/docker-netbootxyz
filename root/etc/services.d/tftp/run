@@ -1,4 +1,13 @@
 #!/usr/bin/with-contenv bash
 
-exec /usr/sbin/in.tftpd \
-	--foreground --listen --user abc --secure ${PORT_RANGE:+--port-range $PORT_RANGE} /config/menus
+TFTP_ARGS=""
+
+if [ "$TFTP_SINGLE_PORT" == "1" ] || [ "$TFTP_SINGLE_PORT" == "true" ]
+then
+    TFTP_ARGS="--tftp-single-port"
+else
+    COMPATIBLE_PORT_RANGE="${PORT_RANGE/:/,}"
+    TFTP_ARGS="--tftp-single-port=${COMPATIBLE_PORT_RANGE}"
+fi
+
+exec dnsmasq -p0 --enable-tftp --tftp-root=/config/menus --user=abc --keep-in-foreground $TFTP_ARGS
