@@ -1,6 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-# Run App
-cd /app
-exec \
-s6-setuidgid abc /usr/bin/node app.js

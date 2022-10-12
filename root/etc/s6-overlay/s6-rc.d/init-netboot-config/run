@@ -1,0 +1,41 @@
+#!/usr/bin/with-contenv bash
+
+# create local logs dir
+mkdir -p \
+    /config/menus/remote \
+    /config/menus/local
+
+# download menus if not found
+if [[ ! -f /config/menus/remote/menu.ipxe ]]; then
+    if [[ -z ${MENU_VERSION+x} ]]; then \
+        MENU_VERSION=$(curl -sL "https://api.github.com/repos/netbootxyz/netboot.xyz/releases/latest" | jq -r '.tag_name')
+    fi
+    echo "[netbootxyz-init] Downloading Netboot.xyz at ${MENU_VERSION}"
+    # menu files
+    curl -o \
+        /config/endpoints.yml -sL \
+        "https://raw.githubusercontent.com/netbootxyz/netboot.xyz/${MENU_VERSION}/endpoints.yml"
+    curl -o \
+        /tmp/menus.tar.gz -sL \
+        "https://github.com/netbootxyz/netboot.xyz/releases/download/${MENU_VERSION}/menus.tar.gz"
+    tar xf \
+        /tmp/menus.tar.gz -C \
+        /config/menus/remote
+    # boot files
+    curl -o \
+        /config/menus/remote/netboot.xyz-undionly.kpxe -sL \
+        "https://github.com/netbootxyz/netboot.xyz/releases/download/${MENU_VERSION}/netboot.xyz-undionly.kpxe"
+    curl -o \
+        /config/menus/remote/netboot.xyz.efi -sL \
+        "https://github.com/netbootxyz/netboot.xyz/releases/download/${MENU_VERSION}/netboot.xyz.efi"
+    curl -o \
+        /config/menus/remote/netboot.xyz.kpxe -sL \
+        "https://github.com/netbootxyz/netboot.xyz/releases/download/${MENU_VERSION}/netboot.xyz.kpxe"
+    # layer and cleanup
+    echo -n "${MENU_VERSION}" > /config/menuversion.txt
+    cp -r /config/menus/remote/* /config/menus
+    rm -f /tmp/menus.tar.gz
+fi
+
+# Ownership
+chown -R abc:abc /config
