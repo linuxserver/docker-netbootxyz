@@ -79,7 +79,7 @@ app_setup_block: |
   
   #### EdgeOS/VyOS
   Connect via SSH
-   ```
+  ```
   configure
   set service dhcp-server use-dnsmasq enable
   set service dns forwarding options "dhcp-match=set:bios,60,PXEClient:Arch:00000"
@@ -166,6 +166,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "12.10.22:", desc: "Rebasing to Alpine 3.16, migrate to s6v3." }
   - { date: "29.04.21:", desc: "Rebasing to alpine 3.13, add SUBFOLDER env variable." }
   - { date: "01.06.20:", desc: "Rebasing to alpine 3.12." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }

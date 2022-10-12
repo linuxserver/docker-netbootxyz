@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bash
+
+# make our folders
+mkdir -p \
+    /assets \
+    /config/{nginx/site-confs,log/nginx} \
+    /run \
+    /var/lib/nginx/tmp/client_body \
+    /var/tmp/nginx
+
+# copy config files
+if [[ ! -f /config/nginx/nginx.conf ]]; then
+    cp /defaults/nginx.conf /config/nginx/nginx.conf
+fi
+
+if [[ ! -f /config/nginx/site-confs/default ]]; then
+    cp /defaults/default /config/nginx/site-confs/default
+fi
+
+# Ownership
+chown -R abc:abc /assets

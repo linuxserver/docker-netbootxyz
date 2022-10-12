@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+exec \
+    s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z localhost 80" \
+        /usr/sbin/nginx -c /config/nginx/nginx.conf
