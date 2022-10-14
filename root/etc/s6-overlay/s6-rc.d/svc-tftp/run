@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+exec \
+    s6-notifyoncheck -d -n 300 -w 1000 -c "nc -zu localhost 69" \
+        /usr/sbin/in.tftpd --foreground --listen --user abc --secure /config

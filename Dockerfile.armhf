@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:arm32v7-3.13
+FROM ghcr.io/linuxserver/baseimage-alpine:arm32v7-3.16
 
 # set version label
 ARG BUILD_DATE
@@ -10,19 +10,19 @@ LABEL maintainer="thelamer"
 ARG DOWNURL="https://boot.netboot.xyz/ipxe"
 
 RUN \
- echo "**** install runtime packages ****" && \
- apk add --no-cache \
-	tftp-hpa && \
- echo "**** download netboot payloads ****" && \
- wget -O \
-	/config/netboot.xyz.kpxe \
-	${DOWNURL}/netboot.xyz.kpxe && \
- wget -O \
-        /config/netboot.xyz.efi \
-        ${DOWNURL}/netboot.xyz.efi && \
- echo "**** Permissions ****" && \
- chown -R abc:abc \
-	/config
+  echo "**** install runtime packages ****" && \
+  apk add --no-cache \
+    tftp-hpa && \
+  echo "**** download netboot payloads ****" && \
+  wget -O \
+    /config/netboot.xyz.kpxe \
+    ${DOWNURL}/netboot.xyz.kpxe && \
+  wget -O \
+    /config/netboot.xyz.efi \
+    ${DOWNURL}/netboot.xyz.efi && \
+  echo "**** Permissions ****" && \
+  chown -R abc:abc \
+    /config
 
 # add local files
 COPY /root /
