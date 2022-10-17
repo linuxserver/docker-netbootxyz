@@ -97,6 +97,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "14.10.22:", desc: "Rebasing tftp branch to Alpine 3.16, migrate to s6v3." }
   - { date: "23.01.21:", desc: "Rebasing to alpine 3.13." }
   - { date: "01.06.20:", desc: "Rebasing to alpine 3.12." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
