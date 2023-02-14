@@ -56,7 +56,7 @@ The architectures supported by this image are:
 | :----: | :----: | ---- |
 | x86-64 | ✅ | amd64-\<version tag\> |
 | arm64 | ✅ | arm64v8-\<version tag\> |
-| armhf| ✅ | arm32v7-\<version tag\> |
+| armhf | ✅ | arm32v7-\<version tag\> |
 
 ## Version Tags
 
@@ -66,7 +66,6 @@ This image provides various versions that are available via tags. Please read th
 | :----: | :----: |--- |
 | latest | ✅ | Web application for full self hosting |
 | tftp | ✅ | TFTP server only with NETBOOT.XYZ boot files |
-
 ## Application Setup
 
 To use this image you need an existing DHCP server where you can set this TFTP server as your DHCP boot destination. This image does not contain a DHCP server nor do we aim to support one in the future. This is simply a TFTP server hosting the latest IPXE kernel builds from [netboot.xyz](https://netboot.xyz). If you are interested in their project and lack the ability to setup a DHCP server to boot this payload they also have USB stick images you can use available on their [downloads page](https://netboot.xyz/downloads/).
@@ -202,6 +201,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+      - TZ=Etc/UTC
       - MENU_VERSION=1.9.9 #optional
       - PORT_RANGE=30000:30010 #optional
       - SUBFOLDER=/ #optional
@@ -222,6 +222,7 @@ docker run -d \
   --name=netbootxyz \
   -e PUID=1000 \
   -e PGID=1000 \
+  -e TZ=Etc/UTC \
   -e MENU_VERSION=1.9.9 `#optional` \
   -e PORT_RANGE=30000:30010 `#optional` \
   -e SUBFOLDER=/ `#optional` \
@@ -232,6 +233,7 @@ docker run -d \
   -v /path/to/assets:/assets `#optional` \
   --restart unless-stopped \
   lscr.io/linuxserver/netbootxyz:latest
+
 ```
 
 ## Parameters
@@ -245,6 +247,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-p 80` | NGINX server for hosting assets. |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
+| `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e MENU_VERSION=1.9.9` | Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest) |
 | `-e PORT_RANGE=30000:30010` | Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details) |
 | `-e SUBFOLDER=/` | Specify a sobfolder if running this behind a reverse proxy (IE /proxy/) |
