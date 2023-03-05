@@ -29,7 +29,6 @@ RUN \
   tar xf \
   /tmp/webapp.tar.gz -C \
     /app/ --strip-components=1 && \
-  npm config set unsafe-perm true && \
   npm install --prefix /app && \
   echo "**** cleanup ****" && \
   apk del --purge \
