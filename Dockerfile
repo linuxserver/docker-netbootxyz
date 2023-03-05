@@ -1,4 +1,6 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.16
+# syntax=docker/dockerfile:1
+
+FROM ghcr.io/linuxserver/baseimage-alpine:3.17
 
 # set version label
 ARG BUILD_DATE
@@ -27,7 +29,6 @@ RUN \
   tar xf \
   /tmp/webapp.tar.gz -C \
     /app/ --strip-components=1 && \
-  npm config set unsafe-perm true && \
   npm install --prefix /app && \
   echo "**** cleanup ****" && \
   apk del --purge \

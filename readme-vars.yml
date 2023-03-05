@@ -166,6 +166,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "05.03.23:", desc: "Rebase to Alpine 3.17." }
   - { date: "12.10.22:", desc: "Rebasing to Alpine 3.16, migrate to s6v3." }
   - { date: "29.04.21:", desc: "Rebasing to alpine 3.13, add SUBFOLDER env variable." }
   - { date: "01.06.20:", desc: "Rebasing to alpine 3.12." }

@@ -1,4 +1,5 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 # create local logs dir
 mkdir -p \
@@ -38,4 +39,4 @@ if [[ ! -f /config/menus/remote/menu.ipxe ]]; then
 fi
 
 # Ownership
-chown -R abc:abc /config
+lsiown -R abc:abc /config

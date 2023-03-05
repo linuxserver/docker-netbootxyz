@@ -1,4 +1,5 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 # make our folders
 mkdir -p \
@@ -18,4 +19,4 @@ if [[ ! -f /config/nginx/site-confs/default ]]; then
 fi
 
 # Ownership
-chown -R abc:abc /assets
+lsiown -R abc:abc /assets
