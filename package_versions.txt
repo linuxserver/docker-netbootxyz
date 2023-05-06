@@ -2,7 +2,7 @@ NAME                          VERSION                TYPE
 @socket.io/component-emitter  3.1.0                  npm     
 @types/cookie                 0.4.1                  npm     
 @types/cors                   2.8.13                 npm     
-@types/node                   18.16.2                npm     
+@types/node                   20.1.0                 npm     
 WebApp                        0.6.7                  npm     
 accepts                       1.3.8                  npm     
 ajv                           6.12.6                 npm     
@@ -61,7 +61,7 @@ ecc-jsbn                      0.1.2                  npm
 ee-first                      1.1.1                  npm     
 ejs                           3.1.9                  npm     
 encodeurl                     1.0.2                  npm     
-engine.io                     6.4.1                  npm     
+engine.io                     6.4.2                  npm     
 engine.io-parser              5.0.6                  npm     
 escape-html                   1.0.3                  npm     
 etag                          1.8.1                  npm     
@@ -136,7 +136,7 @@ netcat-openbsd                1.130-r4               apk
 nghttp2-libs                  1.51.0-r0              apk     
 nginx                         1.22.1-r0              apk     
 node                          18.14.2                binary  
-node-downloader-helper        2.1.6                  npm     
+node-downloader-helper        2.1.7                  npm     
 nodejs                        18.14.2-r0             apk     
 oauth-sign                    0.9.0                  npm     
 object-assign                 4.1.1                  npm     
