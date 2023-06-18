@@ -118,26 +118,8 @@ set service dns forwarding options "dhcp-boot=tag:efi64-2,netboot.xyz.efi,,SERVE
 commit; save
 ```
 
-#### DD-WRT
-Administration -> Services -> Additional DNSMasq Options
-Set the following lines: 
-```
-dhcp-match=set:bios,60,PXEClient:Arch:00000
-dhcp-boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP
-dhcp-match=set:efi32,60,PXEClient:Arch:00002
-dhcp-boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP
-dhcp-match=set:efi32-1,60,PXEClient:Arch:00006
-dhcp-boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP
-dhcp-match=set:efi64,60,PXEClient:Arch:00007
-dhcp-boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP
-dhcp-match=set:efi64-1,60,PXEClient:Arch:00008
-dhcp-boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP
-dhcp-match=set:efi64-2,60,PXEClient:Arch:00009
-dhcp-boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP
-```
-
-#### Tomato
-Advanced -> DHCP/DNS -> Dnsmasq Custom configuration
+#### Dnsmasq/DD-WRT/Tomato/PIHOLE
+Various locations to set Additional/Custom DNSMASQ options in UI or config files
 Set the following lines: 
 ```
 dhcp-match=set:bios,60,PXEClient:Arch:00000
