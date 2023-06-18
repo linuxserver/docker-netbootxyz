@@ -98,7 +98,7 @@ app_setup_block: |
   ```
   
   #### Dnsmasq/DD-WRT/Tomato/PIHOLE
-  Administration -> Services -> Additional DNSMasq Options
+  Various locations to set Additional/Custom DNSMASQ options in UI or config files
   Set the following lines: 
   ```
   dhcp-match=set:bios,60,PXEClient:Arch:00000
