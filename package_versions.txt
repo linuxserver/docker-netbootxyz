@@ -9,7 +9,7 @@ ajv                           6.12.6                 npm
 alpine-baselayout             3.4.0-r0               apk     
 alpine-baselayout-data        3.4.0-r0               apk     
 alpine-keys                   2.4-r1                 apk     
-alpine-release                3.17.3-r0              apk     
+alpine-release                3.17.4-r0              apk     
 ansi-styles                   4.3.0                  npm     
 apk-tools                     2.12.10-r1             apk     
 argparse                      2.0.1                  npm     
