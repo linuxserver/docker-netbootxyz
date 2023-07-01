@@ -6,153 +6,49 @@ project_url: "https://netboot.xyz"
 project_logo: "https://netboot.xyz/images/netboot.xyz.gif"
 project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is a way to PXE boot various operating system installers or utilities from one place within the BIOS without the need of having to go retrieve the media to run the tool. iPXE is used to provide a user friendly menu from within the BIOS that lets you easily choose the operating system you want along with any specific types of versions or bootable flags."
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
-
 # supported architectures
 available_architectures:
-  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
-  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
-  - { arch: "{{ arch_armhf }}", tag: "arm32v7-latest"}
-
+  - {arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - {arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
 # development version
 development_versions: true
 development_versions_items:
-  - { tag: "latest", desc: "Web application for full self hosting" }
-  - { tag: "tftp", desc: "TFTP server only with NETBOOT.XYZ boot files" }
-
+  - {tag: "latest", desc: "Web application for full self hosting"}
+  - {tag: "tftp", desc: "TFTP server only with NETBOOT.XYZ boot files"}
 # container parameters
 common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "/path/to/config", desc: "Storage for boot menu files and web application config" }
+  - {vol_path: "/config", vol_host_path: "/path/to/config", desc: "Storage for boot menu files and web application config"}
 param_usage_include_ports: true
 param_ports:
-  - { external_port: "3000", internal_port: "3000", port_desc: "Web configuration interface." }
-  - { external_port: "69", internal_port: "69/udp", port_desc: "TFTP Port." }
+  - {external_port: "3000", internal_port: "3000", port_desc: "Web configuration interface."}
+  - {external_port: "69", internal_port: "69/udp", port_desc: "TFTP Port."}
 param_usage_include_env: false
-
 # optional env variables
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "MENU_VERSION", env_value: "1.9.9", desc: "Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest)"}
-  - { env_var: "PORT_RANGE", env_value: "30000:30010", desc: "Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details)"}
-  - { env_var: "SUBFOLDER", env_value: "/", desc: "Specify a sobfolder if running this behind a reverse proxy (IE /proxy/)"}
+  - {env_var: "MENU_VERSION", env_value: "1.9.9", desc: "Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest)"}
+  - {env_var: "PORT_RANGE", env_value: "30000:30010", desc: "Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details)"}
+  - {env_var: "SUBFOLDER", env_value: "/", desc: "Specify a sobfolder if running this behind a reverse proxy (IE /proxy/)"}
 opt_param_usage_include_ports: true
 opt_param_ports:
-  - { external_port: "8080", internal_port: "80", port_desc: "NGINX server for hosting assets." }
+  - {external_port: "8080", internal_port: "80", port_desc: "NGINX server for hosting assets."}
 opt_param_usage_include_vols: true
 opt_param_volumes:
-  - { vol_path: "/assets", vol_host_path: "/path/to/assets", desc: "Storage for NETBOOT.XYZ bootable assets (live CDs and other files)" }
-
+  - {vol_path: "/assets", vol_host_path: "/path/to/assets", desc: "Storage for NETBOOT.XYZ bootable assets (live CDs and other files)"}
 # application setup block
 app_setup_block_enabled: true
-app_setup_block: |
-  To use this image you need an existing DHCP server where you can set this TFTP server as your DHCP boot destination. This image does not contain a DHCP server nor do we aim to support one in the future. This is simply a TFTP server hosting the latest IPXE kernel builds from [netboot.xyz]({{ project_url }}). If you are interested in their project and lack the ability to setup a DHCP server to boot this payload they also have USB stick images you can use available on their [downloads page]({{ project_url }}/downloads/).
-  
-  ### Router Setup Examples
-
-  #### PFSense
-  Services -> DHCP Server
-
-  Set both the option for "TFTP Server" and the options under the Advanced "Network Booting" section. 
-  * check enable
-  * Next server- IP used for TFTP Server
-  * Default BIOS file name- `netboot.xyz.kpxe`
-  * UEFI 32 bit file name- `netboot.xyz.efi`
-  * UEFI 64 bit file name- `netboot.xyz.efi`
-
-  #### OPNsense
-  Services -> DHCP Server
-
-  Under the Advanced "Network Booting" section. 
-  * check enable
-  * Next server- IP of docker host
-  * Default BIOS file name- `netboot.xyz.kpxe`
-  * UEFI 32 bit file name- `netboot.xyz.efi`
-  * UEFI 64 bit file name- `netboot.xyz.efi`
-
-  #### Unifi Security Gateway (with the controller)
-  Networks -> LAN (or the network you want to boot from) -> ADVANCED DHCP OPTIONS
-  * tick Enable network boot
-  * Server-  YOURSERVERIP
-  * Filename- `netboot.xyz.kpxe`
-  
-  #### EdgeOS/VyOS
-  Connect via SSH
-  ```
-  configure
-  set service dhcp-server use-dnsmasq enable
-  set service dns forwarding options "dhcp-match=set:bios,60,PXEClient:Arch:00000"
-  set service dns forwarding options "dhcp-boot=tag:bios,netboot.xyz.kpxe,,SERVERIP"
-  set service dns forwarding options "dhcp-match=set:efi32,60,PXEClient:Arch:00002"
-  set service dns forwarding options "dhcp-boot=tag:efi32,netboot.xyz.efi,,SERVERIP"
-  set service dns forwarding options "dhcp-match=set:efi32-1,60,PXEClient:Arch:00006"
-  set service dns forwarding options "dhcp-boot=tag:efi32-1,netboot.xyz.efi,,SERVERIP"
-  set service dns forwarding options "dhcp-match=set:efi64,60,PXEClient:Arch:00007"
-  set service dns forwarding options "dhcp-boot=tag:efi64,netboot.xyz.efi,,SERVERIP"
-  set service dns forwarding options "dhcp-match=set:efi64-1,60,PXEClient:Arch:00008"
-  set service dns forwarding options "dhcp-boot=tag:efi64-1,netboot.xyz.efi,,SERVERIP"
-  set service dns forwarding options "dhcp-match=set:efi64-2,60,PXEClient:Arch:00009"
-  set service dns forwarding options "dhcp-boot=tag:efi64-2,netboot.xyz.efi,,SERVERIP"
-  commit; save
-  ```
-  
-  #### Dnsmasq/DD-WRT/Tomato/PIHOLE
-  Various locations to set Additional/Custom DNSMASQ options in UI or config files
-  Set the following lines: 
-  ```
-  dhcp-match=set:bios,60,PXEClient:Arch:00000
-  dhcp-boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP
-  dhcp-match=set:efi32,60,PXEClient:Arch:00002
-  dhcp-boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP
-  dhcp-match=set:efi32-1,60,PXEClient:Arch:00006
-  dhcp-boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP
-  dhcp-match=set:efi64,60,PXEClient:Arch:00007
-  dhcp-boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP
-  dhcp-match=set:efi64-1,60,PXEClient:Arch:00008
-  dhcp-boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP
-  dhcp-match=set:efi64-2,60,PXEClient:Arch:00009
-  dhcp-boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP
-  ```
-  
-  #### OpenWRT
-  ```
-  uci set dhcp.@dnsmasq[0].dhcp_match=set:bios,60,PXEClient:Arch:00000
-  uci set dhcp.@dnsmasq[0].dhcp_boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP
-  uci set dhcp.@dnsmasq[0].dhcp_match=set:efi32,60,PXEClient:Arch:00002
-  uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP
-  uci set dhcp.@dnsmasq[0].dhcp_match=set:efi32-1,60,PXEClient:Arch:00006
-  uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP
-  uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64,60,PXEClient:Arch:00007
-  uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP
-  uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64-1,60,PXEClient:Arch:00008
-  uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP
-  uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64-2,60,PXEClient:Arch:00009
-  uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP
-  uci commit
-  /etc/init.d/dnsmasq restart
-  ```
-  #### Microsoft Server DHCP
-
-  * Run the DHCP program
-  * Under Scope/Scope Options
-  * check option 066 and enter the FQDN or IP of your TFTP boot server
-  * check option 067 and enter one of the following bootfile names:
-     * Default BIOS file name- netboot.xyz.kpxe
-     * UEFI 32 bit file name- netboot.xyz.efi
-     * UEFI 64 bit file name- netboot.xyz.efi
-  
-  Anything else from a router standpoint is a crapshoot for supporting Dnsmasq options or proprietary PXE boot options, check Google for support (try your exact router model number with 'pxe boot') or look into setting up your own DHCP server in Linux.
-  
-  This image also contains `netboot.xyz.efi` which can be used to boot using UEFI network boot. The UEFI boot and menu will have limited functionality if you choose to use it. 
-
+app_setup_block: "To use this image you need an existing DHCP server where you can set this TFTP server as your DHCP boot destination. This image does not contain a DHCP server nor do we aim to support one in the future. This is simply a TFTP server hosting the latest IPXE kernel builds from [netboot.xyz]({{ project_url }}). If you are interested in their project and lack the ability to setup a DHCP server to boot this payload they also have USB stick images you can use available on their [downloads page]({{ project_url }}/downloads/).\n\n### Router Setup Examples\n\n#### PFSense\nServices -> DHCP Server\n\nSet both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section. \n* check enable\n* Next server- IP used for TFTP Server\n* Default BIOS file name- `netboot.xyz.kpxe`\n* UEFI 32 bit file name- `netboot.xyz.efi`\n* UEFI 64 bit file name- `netboot.xyz.efi`\n\n#### OPNsense\nServices -> DHCP Server\n\nUnder the Advanced \"Network Booting\" section. \n* check enable\n* Next server- IP of docker host\n* Default BIOS file name- `netboot.xyz.kpxe`\n* UEFI 32 bit file name- `netboot.xyz.efi`\n* UEFI 64 bit file name- `netboot.xyz.efi`\n\n#### Unifi Security Gateway (with the controller)\nNetworks -> LAN (or the network you want to boot from) -> ADVANCED DHCP OPTIONS\n* tick Enable network boot\n* Server-  YOURSERVERIP\n* Filename- `netboot.xyz.kpxe`\n\n#### EdgeOS/VyOS\nConnect via SSH\n```\nconfigure\nset service dhcp-server use-dnsmasq enable\nset service dns forwarding options \"dhcp-match=set:bios,60,PXEClient:Arch:00000\"\nset service dns forwarding options \"dhcp-boot=tag:bios,netboot.xyz.kpxe,,SERVERIP\"\nset service dns forwarding options \"dhcp-match=set:efi32,60,PXEClient:Arch:00002\"\nset service dns forwarding options \"dhcp-boot=tag:efi32,netboot.xyz.efi,,SERVERIP\"\nset service dns forwarding options \"dhcp-match=set:efi32-1,60,PXEClient:Arch:00006\"\nset service dns forwarding options \"dhcp-boot=tag:efi32-1,netboot.xyz.efi,,SERVERIP\"\nset service dns forwarding options \"dhcp-match=set:efi64,60,PXEClient:Arch:00007\"\nset service dns forwarding options \"dhcp-boot=tag:efi64,netboot.xyz.efi,,SERVERIP\"\nset service dns forwarding options \"dhcp-match=set:efi64-1,60,PXEClient:Arch:00008\"\nset service dns forwarding options \"dhcp-boot=tag:efi64-1,netboot.xyz.efi,,SERVERIP\"\nset service dns forwarding options \"dhcp-match=set:efi64-2,60,PXEClient:Arch:00009\"\nset service dns forwarding options \"dhcp-boot=tag:efi64-2,netboot.xyz.efi,,SERVERIP\"\ncommit; save\n```\n\n#### Dnsmasq/DD-WRT/Tomato/PIHOLE\nVarious locations to set Additional/Custom DNSMASQ options in UI or config files\nSet the following lines: \n```\ndhcp-match=set:bios,60,PXEClient:Arch:00000\ndhcp-boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP\ndhcp-match=set:efi32,60,PXEClient:Arch:00002\ndhcp-boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP\ndhcp-match=set:efi32-1,60,PXEClient:Arch:00006\ndhcp-boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP\ndhcp-match=set:efi64,60,PXEClient:Arch:00007\ndhcp-boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP\ndhcp-match=set:efi64-1,60,PXEClient:Arch:00008\ndhcp-boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP\ndhcp-match=set:efi64-2,60,PXEClient:Arch:00009\ndhcp-boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP\n```\n\n#### OpenWRT\n```\nuci set dhcp.@dnsmasq[0].dhcp_match=set:bios,60,PXEClient:Arch:00000\nuci set dhcp.@dnsmasq[0].dhcp_boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP\nuci set dhcp.@dnsmasq[0].dhcp_match=set:efi32,60,PXEClient:Arch:00002\nuci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP\nuci set dhcp.@dnsmasq[0].dhcp_match=set:efi32-1,60,PXEClient:Arch:00006\nuci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP\nuci set dhcp.@dnsmasq[0].dhcp_match=set:efi64,60,PXEClient:Arch:00007\nuci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP\nuci set dhcp.@dnsmasq[0].dhcp_match=set:efi64-1,60,PXEClient:Arch:00008\nuci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP\nuci set dhcp.@dnsmasq[0].dhcp_match=set:efi64-2,60,PXEClient:Arch:00009\nuci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP\nuci commit\n/etc/init.d/dnsmasq restart\n```\n#### Microsoft Server DHCP\n\n* Run the DHCP program\n* Under Scope/Scope Options\n* check option 066 and enter the FQDN or IP of your TFTP boot server\n* check option 067 and enter one of the following bootfile names:\n   * Default BIOS file name- netboot.xyz.kpxe\n   * UEFI 32 bit file name- netboot.xyz.efi\n   * UEFI 64 bit file name- netboot.xyz.efi\n\nAnything else from a router standpoint is a crapshoot for supporting Dnsmasq options or proprietary PXE boot options, check Google for support (try your exact router model number with 'pxe boot') or look into setting up your own DHCP server in Linux.\n\nThis image also contains `netboot.xyz.efi` which can be used to boot using UEFI network boot. The UEFI boot and menu will have limited functionality if you choose to use it. \n"
 # changelog
 changelogs:
-  - { date: "05.03.23:", desc: "Rebase to Alpine 3.17." }
-  - { date: "12.10.22:", desc: "Rebasing to Alpine 3.16, migrate to s6v3." }
-  - { date: "29.04.21:", desc: "Rebasing to alpine 3.13, add SUBFOLDER env variable." }
-  - { date: "01.06.20:", desc: "Rebasing to alpine 3.12." }
-  - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
-  - { date: "13.12.19:", desc: "Swapping latest tag over to webapp stack for management." }
-  - { date: "10.12.19:", desc: "Adding tftp branch to provide tftp only option to latest users." }
-  - { date: "22.10.19:", desc: "Initial release." }
+  - {date: "01.07.23:", desc: "Deprecate armhf. As announced [here](https://www.linuxserver.io/blog/a-farewell-to-arm-hf)"}
+  - {date: "05.03.23:", desc: "Rebase to Alpine 3.17."}
+  - {date: "12.10.22:", desc: "Rebasing to Alpine 3.16, migrate to s6v3."}
+  - {date: "29.04.21:", desc: "Rebasing to alpine 3.13, add SUBFOLDER env variable."}
+  - {date: "01.06.20:", desc: "Rebasing to alpine 3.12."}
+  - {date: "19.12.19:", desc: "Rebasing to alpine 3.11."}
+  - {date: "13.12.19:", desc: "Swapping latest tag over to webapp stack for management."}
+  - {date: "10.12.19:", desc: "Adding tftp branch to provide tftp only option to latest users."}
+  - {date: "22.10.19:", desc: "Initial release."}
