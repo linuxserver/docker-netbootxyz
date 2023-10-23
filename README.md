@@ -97,6 +97,7 @@ Networks -> LAN (or the network you want to boot from) -> ADVANCED DHCP OPTIONS
 * tick Enable network boot
 * Server-  YOURSERVERIP
 * Filename- `netboot.xyz.kpxe`
+  
 Advanced full support
 * For USG variants force provisioning a json containing the same config used for
   EdgeOS (shown below) will fully support netboot.
