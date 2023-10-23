@@ -97,9 +97,10 @@ Networks -> LAN (or the network you want to boot from) -> ADVANCED DHCP OPTIONS
 * tick Enable network boot
 * Server-  YOURSERVERIP
 * Filename- `netboot.xyz.kpxe`
-- For USG variants force provisioning a json containing the same config used for
+Advanced full support
+* For USG variants force provisioning a json containing the same config used for
   EdgeOS (shown below) will fully support netboot.
-- For UDM variants, creating a valid dnsmasq config and placing in /run/dnsmasq.conf.d
+* For UDM variants, creating a valid dnsmasq config and placing in /run/dnsmasq.conf.d
   will load the config, but will not survive reboots or firmware updates [source](https://community.ui.com/questions/PXE-Network-boot-UDM-SE-Serving-files-conditionally-based-on-architecture/1843fcf6-87d5-4305-bc1d-4e55619ebb10).
   
 
