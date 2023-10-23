@@ -69,110 +69,18 @@ This image provides various versions that are available via tags. Please read th
 ## Application Setup
 
 To use this image you need an existing DHCP server where you can set this TFTP server as your DHCP boot destination. This image does not contain a DHCP server nor do we aim to support one in the future. This is simply a TFTP server hosting the latest IPXE kernel builds from [netboot.xyz](https://netboot.xyz). If you are interested in their project and lack the ability to setup a DHCP server to boot this payload they also have USB stick images you can use available on their [downloads page](https://netboot.xyz/downloads/).
-
 ### Router Setup Examples
-
-#### PFSense
-Services -> DHCP Server
-
-Set both the option for "TFTP Server" and the options under the Advanced "Network Booting" section. 
-* check enable
-* Next server- IP used for TFTP Server
-* Default BIOS file name- `netboot.xyz.kpxe`
-* UEFI 32 bit file name- `netboot.xyz.efi`
-* UEFI 64 bit file name- `netboot.xyz.efi`
-
-#### OPNsense
-Services -> DHCP Server
-
-Under the Advanced "Network Booting" section. 
-* check enable
-* Next server- IP of docker host
-* Default BIOS file name- `netboot.xyz.kpxe`
-* UEFI 32 bit file name- `netboot.xyz.efi`
-* UEFI 64 bit file name- `netboot.xyz.efi`
-
-#### Unifi Security Gateway (with the controller)
-Networks -> LAN (or the network you want to boot from) -> ADVANCED DHCP OPTIONS
-* tick Enable network boot
-* Server-  YOURSERVERIP
-* Filename- `netboot.xyz.kpxe`
-  
-Advanced full support
-* For USG variants force provisioning a json containing the same config used for
-  EdgeOS (shown below) will fully support netboot.
-* For UDM variants, creating a valid dnsmasq config and placing in /run/dnsmasq.conf.d
-  will load the config, but will not survive reboots or firmware updates [source](https://community.ui.com/questions/PXE-Network-boot-UDM-SE-Serving-files-conditionally-based-on-architecture/1843fcf6-87d5-4305-bc1d-4e55619ebb10).
-  
-
-#### EdgeOS/VyOS
-Connect via SSH
-```
-configure
-set service dhcp-server use-dnsmasq enable
-set service dns forwarding options "dhcp-match=set:bios,60,PXEClient:Arch:00000"
-set service dns forwarding options "dhcp-boot=tag:bios,netboot.xyz.kpxe,,SERVERIP"
-set service dns forwarding options "dhcp-match=set:efi32,60,PXEClient:Arch:00002"
-set service dns forwarding options "dhcp-boot=tag:efi32,netboot.xyz.efi,,SERVERIP"
-set service dns forwarding options "dhcp-match=set:efi32-1,60,PXEClient:Arch:00006"
-set service dns forwarding options "dhcp-boot=tag:efi32-1,netboot.xyz.efi,,SERVERIP"
-set service dns forwarding options "dhcp-match=set:efi64,60,PXEClient:Arch:00007"
-set service dns forwarding options "dhcp-boot=tag:efi64,netboot.xyz.efi,,SERVERIP"
-set service dns forwarding options "dhcp-match=set:efi64-1,60,PXEClient:Arch:00008"
-set service dns forwarding options "dhcp-boot=tag:efi64-1,netboot.xyz.efi,,SERVERIP"
-set service dns forwarding options "dhcp-match=set:efi64-2,60,PXEClient:Arch:00009"
-set service dns forwarding options "dhcp-boot=tag:efi64-2,netboot.xyz.efi,,SERVERIP"
-commit; save
-```
-
-#### Dnsmasq/DD-WRT/Tomato/PIHOLE
-Various locations to set Additional/Custom DNSMASQ options in UI or config files
-Set the following lines: 
-```
-dhcp-match=set:bios,60,PXEClient:Arch:00000
-dhcp-boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP
-dhcp-match=set:efi32,60,PXEClient:Arch:00002
-dhcp-boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP
-dhcp-match=set:efi32-1,60,PXEClient:Arch:00006
-dhcp-boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP
-dhcp-match=set:efi64,60,PXEClient:Arch:00007
-dhcp-boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP
-dhcp-match=set:efi64-1,60,PXEClient:Arch:00008
-dhcp-boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP
-dhcp-match=set:efi64-2,60,PXEClient:Arch:00009
-dhcp-boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP
-```
-
-#### OpenWRT
-```
-uci set dhcp.@dnsmasq[0].dhcp_match=set:bios,60,PXEClient:Arch:00000
-uci set dhcp.@dnsmasq[0].dhcp_boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP
-uci set dhcp.@dnsmasq[0].dhcp_match=set:efi32,60,PXEClient:Arch:00002
-uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP
-uci set dhcp.@dnsmasq[0].dhcp_match=set:efi32-1,60,PXEClient:Arch:00006
-uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP
-uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64,60,PXEClient:Arch:00007
-uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP
-uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64-1,60,PXEClient:Arch:00008
-uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP
-uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64-2,60,PXEClient:Arch:00009
-uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP
-uci commit
-/etc/init.d/dnsmasq restart
-```
+#### PFSense Services -> DHCP Server
+Set both the option for "TFTP Server" and the options under the Advanced "Network Booting" section. * check enable * Next server- IP used for TFTP Server * Default BIOS file name- `netboot.xyz.kpxe` * UEFI 32 bit file name- `netboot.xyz.efi` * UEFI 64 bit file name- `netboot.xyz.efi`
+#### OPNsense Services -> DHCP Server
+Under the Advanced "Network Booting" section. * check enable * Next server- IP of docker host * Default BIOS file name- `netboot.xyz.kpxe` * UEFI 32 bit file name- `netboot.xyz.efi` * UEFI 64 bit file name- `netboot.xyz.efi`
+#### Unifi Security Gateway (with the controller) Networks -> LAN (or the network you want to boot from) -> ADVANCED DHCP OPTIONS * tick Enable network boot * Server-  YOURSERVERIP * Filename- `netboot.xyz.kpxe` Advanced full support * For USG variants force provisioning a json containing the same config used for EdgeOS (shown below) will fully support netboot. * For UDM variants, creating a valid dnsmasq config and placing in /run/dnsmasq.conf.d will load the config, but will not survive reboots or firmware updates [source](https://community.ui.com/questions/PXE-Network-boot-UDM-SE-Serving-files-conditionally-based-on-architecture/1843fcf6-87d5-4305-bc1d-4e55619ebb10).
+#### EdgeOS/VyOS Connect via SSH ``` configure set service dhcp-server use-dnsmasq enable set service dns forwarding options "dhcp-match=set:bios,60,PXEClient:Arch:00000" set service dns forwarding options "dhcp-boot=tag:bios,netboot.xyz.kpxe,,SERVERIP" set service dns forwarding options "dhcp-match=set:efi32,60,PXEClient:Arch:00002" set service dns forwarding options "dhcp-boot=tag:efi32,netboot.xyz.efi,,SERVERIP" set service dns forwarding options "dhcp-match=set:efi32-1,60,PXEClient:Arch:00006" set service dns forwarding options "dhcp-boot=tag:efi32-1,netboot.xyz.efi,,SERVERIP" set service dns forwarding options "dhcp-match=set:efi64,60,PXEClient:Arch:00007" set service dns forwarding options "dhcp-boot=tag:efi64,netboot.xyz.efi,,SERVERIP" set service dns forwarding options "dhcp-match=set:efi64-1,60,PXEClient:Arch:00008" set service dns forwarding options "dhcp-boot=tag:efi64-1,netboot.xyz.efi,,SERVERIP" set service dns forwarding options "dhcp-match=set:efi64-2,60,PXEClient:Arch:00009" set service dns forwarding options "dhcp-boot=tag:efi64-2,netboot.xyz.efi,,SERVERIP" commit; save ```
+#### Dnsmasq/DD-WRT/Tomato/PIHOLE Various locations to set Additional/Custom DNSMASQ options in UI or config files Set the following lines: ``` dhcp-match=set:bios,60,PXEClient:Arch:00000 dhcp-boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP dhcp-match=set:efi32,60,PXEClient:Arch:00002 dhcp-boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP dhcp-match=set:efi32-1,60,PXEClient:Arch:00006 dhcp-boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP dhcp-match=set:efi64,60,PXEClient:Arch:00007 dhcp-boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP dhcp-match=set:efi64-1,60,PXEClient:Arch:00008 dhcp-boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP dhcp-match=set:efi64-2,60,PXEClient:Arch:00009 dhcp-boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP ```
+#### OpenWRT ``` uci set dhcp.@dnsmasq[0].dhcp_match=set:bios,60,PXEClient:Arch:00000 uci set dhcp.@dnsmasq[0].dhcp_boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP uci set dhcp.@dnsmasq[0].dhcp_match=set:efi32,60,PXEClient:Arch:00002 uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32,netboot.xyz.efi,,YOURSERVERIP uci set dhcp.@dnsmasq[0].dhcp_match=set:efi32-1,60,PXEClient:Arch:00006 uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi32-1,netboot.xyz.efi,,YOURSERVERIP uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64,60,PXEClient:Arch:00007 uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64,netboot.xyz.efi,,YOURSERVERIP uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64-1,60,PXEClient:Arch:00008 uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-1,netboot.xyz.efi,,YOURSERVERIP uci set dhcp.@dnsmasq[0].dhcp_match=set:efi64-2,60,PXEClient:Arch:00009 uci set dhcp.@dnsmasq[0].dhcp_boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP uci commit /etc/init.d/dnsmasq restart ```
 #### Microsoft Server DHCP
-
-* Run the DHCP program
-* Under Scope/Scope Options
-* check option 066 and enter the FQDN or IP of your TFTP boot server
-* check option 067 and enter one of the following bootfile names:
-   * Default BIOS file name- netboot.xyz.kpxe
-   * UEFI 32 bit file name- netboot.xyz.efi
-   * UEFI 64 bit file name- netboot.xyz.efi
-
-Anything else from a router standpoint is a crapshoot for supporting Dnsmasq options or proprietary PXE boot options, check Google for support (try your exact router model number with 'pxe boot') or look into setting up your own DHCP server in Linux.
-
-This image also contains `netboot.xyz.efi` which can be used to boot using UEFI network boot. The UEFI boot and menu will have limited functionality if you choose to use it.
+* Run the DHCP program * Under Scope/Scope Options * check option 066 and enter the FQDN or IP of your TFTP boot server * check option 067 and enter one of the following bootfile names: * Default BIOS file name- netboot.xyz.kpxe * UEFI 32 bit file name- netboot.xyz.efi * UEFI 64 bit file name- netboot.xyz.efi
+Anything else from a router standpoint is a crapshoot for supporting Dnsmasq options or proprietary PXE boot options, check Google for support (try your exact router model number with 'pxe boot') or look into setting up your own DHCP server in Linux. This image also contains `netboot.xyz.efi` which can be used to boot using UEFI network boot. The UEFI boot and menu will have limited functionality if you choose to use it.
 
 ## Usage
 
