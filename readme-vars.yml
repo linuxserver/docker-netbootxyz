@@ -47,7 +47,7 @@ app_setup_block: "To use this image you need an existing DHCP server where you c
 #### PFSense
 Services -> DHCP Server
 
-Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section.
+Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section.\n
 * check enable
 * Next server- IP used for TFTP Server
 * Default BIOS file name- `netboot.xyz.kpxe`
