@@ -3,7 +3,7 @@ NAME                          VERSION                TYPE
 @types/cookie                 0.4.1                  npm   
 @types/cors                   2.8.16                 npm   
 @types/node                   20.9.0                 npm   
-WebApp                        0.6.9                  npm   
+WebApp                        0.7.0                  npm   
 accepts                       1.3.8                  npm   
 alpine-baselayout             3.4.0-r0               apk   
 alpine-baselayout-data        3.4.0-r0               apk   
@@ -85,7 +85,7 @@ libcurl                       8.4.0-r0               apk
 libgcc                        12.2.1_git20220924-r4  apk   
 libintl                       0.21.1-r1              apk   
 libmd                         1.0.4-r0               apk   
-libproc                       3.3.17-r2              apk   
+libproc                       3.3.17-r3              apk   
 libssl3                       3.0.12-r0              apk   
 libstdc++                     12.2.1_git20220924-r4  apk   
 linux-pam                     1.5.2-r1               apk   
@@ -119,7 +119,7 @@ parseurl                      1.3.3                  npm
 path-to-regexp                0.1.7                  npm   
 pcre                          8.45-r2                apk   
 picomatch                     2.3.1                  npm   
-procps                        3.3.17-r2              apk   
+procps                        3.3.17-r3              apk   
 proxy-addr                    2.0.7                  npm   
 qs                            6.11.0                 npm   
 range-parser                  1.2.1                  npm   
@@ -142,7 +142,7 @@ socket.io-parser              4.2.4                  npm
 ssl_client                    1.35.0-r29             apk   
 statuses                      2.0.1                  npm   
 supports-color                7.2.0                  npm   
-systeminformation             5.21.13                npm   
+systeminformation             5.21.17                npm   
 tftp-hpa                      5.2-r5                 apk   
 toidentifier                  1.0.1                  npm   
 tr46                          0.0.3                  npm   
