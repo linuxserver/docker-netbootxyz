@@ -128,6 +128,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - {date: "08.12.23:", desc: "Rebase tftp branch to Alpine 3.19."}
   - {date: "17.11.23:", desc: "Rebase tftp branch to Alpine 3.18."}
   - {date: "01.07.23:", desc: "Deprecate armhf. As announced [here](https://www.linuxserver.io/blog/a-farewell-to-arm-hf)"}
   - {date: "05.03.23:", desc: "Rebase tftp branch to Alpine 3.17."}
