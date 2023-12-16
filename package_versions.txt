@@ -118,7 +118,7 @@ nghttp2-libs                  1.58.0-r0              apk
 nginx                         1.24.0-r14             apk   
 node-downloader-helper        2.1.9                  npm   
 node-fetch                    2.7.0                  npm   
-nodejs                        20.10.0-r0             apk   
+nodejs                        20.10.0-r1             apk   
 object-assign                 4.1.1                  npm   
 object-inspect                1.13.1                 npm   
 on-finished                   2.4.1                  npm   
