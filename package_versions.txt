@@ -155,7 +155,7 @@ tftp-hpa                      5.2-r7                 apk
 toidentifier                  1.0.1                  npm   
 tr46                          0.0.3                  npm   
 type-is                       1.6.18                 npm   
-tzdata                        2023c-r1               apk   
+tzdata                        2023d-r0               apk   
 undici-types                  5.26.5                 npm   
 unpipe                        1.0.0                  npm   
 utils-merge                   1.0.1                  npm   
