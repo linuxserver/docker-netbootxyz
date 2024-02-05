@@ -3,7 +3,7 @@ NAME                          VERSION                TYPE
 @types/cookie                 0.4.1                  npm   
 @types/cors                   2.8.17                 npm   
 @types/node                   20.11.16               npm   
-WebApp                        0.7.0                  npm   
+WebApp                        0.7.1                  npm   
 accepts                       1.3.8                  npm   
 ada-libs                      2.7.4-r0               apk   
 alpine-baselayout             3.4.3-r2               apk   
@@ -54,6 +54,7 @@ ejs                           3.1.9                  npm
 encodeurl                     1.0.2                  npm   
 engine.io                     6.5.4                  npm   
 engine.io-parser              5.2.1                  npm   
+es-errors                     1.0.0                  npm   
 escape-html                   1.0.3                  npm   
 etag                          1.8.1                  npm   
 express                       4.18.2                 npm   
@@ -62,7 +63,7 @@ finalhandler                  1.2.0                  npm
 forwarded                     0.2.0                  npm   
 fresh                         0.5.2                  npm   
 function-bind                 1.1.2                  npm   
-get-intrinsic                 1.2.2                  npm   
+get-intrinsic                 1.2.3                  npm   
 gopd                          1.0.1                  npm   
 has-flag                      4.0.0                  npm   
 has-property-descriptors      1.0.1                  npm   
@@ -144,18 +145,18 @@ setprototypeof                1.2.0                  npm
 shadow                        4.14.2-r0              apk   
 side-channel                  1.0.4                  npm   
 skalibs                       2.14.0.1-r0            apk   
-socket.io                     4.7.2                  npm   
+socket.io                     4.7.4                  npm   
 socket.io-adapter             2.5.2                  npm   
 socket.io-parser              4.2.4                  npm   
 ssl_client                    1.36.1-r15             apk   
 statuses                      2.0.1                  npm   
 supports-color                7.2.0                  npm   
-systeminformation             5.21.17                npm   
+systeminformation             5.21.24                npm   
 tftp-hpa                      5.2-r7                 apk   
 toidentifier                  1.0.1                  npm   
 tr46                          0.0.3                  npm   
 type-is                       1.6.18                 npm   
-tzdata                        2023d-r0               apk   
+tzdata                        2024a-r0               apk   
 undici-types                  5.26.5                 npm   
 unpipe                        1.0.0                  npm   
 utils-merge                   1.0.1                  npm   
