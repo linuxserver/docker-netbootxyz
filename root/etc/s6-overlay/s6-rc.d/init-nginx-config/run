@@ -15,6 +15,10 @@ if [[ ! -f /config/nginx/nginx.conf ]]; then
 fi
 
 if [[ ! -f /config/nginx/site-confs/default ]]; then
+    if [ -z ${NGINX_PORT+x} ]; then
+        NGINX_PORT=80
+    fi
+    sed -i "s/REPLACE_PORT/$NGINX_PORT/g" /defaults/default
     cp /defaults/default /config/nginx/site-confs/default
 fi
 

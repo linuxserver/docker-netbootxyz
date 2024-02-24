@@ -172,6 +172,8 @@ services:
       - MENU_VERSION=1.9.9 #optional
       - PORT_RANGE=30000:30010 #optional
       - SUBFOLDER=/ #optional
+      - NGINX_PORT=80 #optional
+      - WEB_APP_PORT=3000 #optional
     volumes:
       - /path/to/config:/config
       - /path/to/assets:/assets #optional
@@ -193,6 +195,8 @@ docker run -d \
   -e MENU_VERSION=1.9.9 `#optional` \
   -e PORT_RANGE=30000:30010 `#optional` \
   -e SUBFOLDER=/ `#optional` \
+  -e NGINX_PORT=80 `#optional` \
+  -e WEB_APP_PORT=3000 `#optional` \
   -p 3000:3000 \
   -p 69:69/udp \
   -p 8080:80 `#optional` \
@@ -217,6 +221,8 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e MENU_VERSION=1.9.9` | Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest) |
 | `-e PORT_RANGE=30000:30010` | Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details) |
 | `-e SUBFOLDER=/` | Specify a sobfolder if running this behind a reverse proxy (IE /proxy/) |
+| `-e NGINX_PORT=80` | Specify a different internal port for the asset server |
+| `-e WEB_APP_PORT=3000` | Specify a different internal port for the configuration UI |
 | `-v /config` | Storage for boot menu files and web application config |
 | `-v /assets` | Storage for NETBOOT.XYZ bootable assets (live CDs and other files) |
 
@@ -381,6 +387,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **24.02.24:** - Add new port settings for the webserver and app.
 * **08.12.23:** - Rebase to Alpine 3.19.
 * **17.11.23:** - Rebase to Alpine 3.18.
 * **01.07.23:** - Deprecate armhf. As announced [here](https://www.linuxserver.io/blog/a-farewell-to-arm-hf)
