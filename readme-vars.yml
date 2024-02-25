@@ -32,6 +32,8 @@ opt_param_env_vars:
   - {env_var: "MENU_VERSION", env_value: "1.9.9", desc: "Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest)"}
   - {env_var: "PORT_RANGE", env_value: "30000:30010", desc: "Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details)"}
   - {env_var: "SUBFOLDER", env_value: "/", desc: "Specify a sobfolder if running this behind a reverse proxy (IE /proxy/)"}
+  - {env_var: "NGINX_PORT", env_value: "80", desc: "Specify a different internal port for the asset server"}
+  - {env_var: "WEB_APP_PORT", env_value: "3000", desc: "Specify a different internal port for the configuration UI"}
 opt_param_usage_include_ports: true
 opt_param_ports:
   - {external_port: "8080", internal_port: "80", port_desc: "NGINX server for hosting assets."}
@@ -128,6 +130,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - {date: "24.02.24:", desc: "Add new port settings for the webserver and app."}
   - {date: "08.12.23:", desc: "Rebase to Alpine 3.19."}
   - {date: "17.11.23:", desc: "Rebase to Alpine 3.18."}
   - {date: "01.07.23:", desc: "Deprecate armhf. As announced [here](https://www.linuxserver.io/blog/a-farewell-to-arm-hf)"}
