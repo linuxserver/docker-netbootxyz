@@ -26,8 +26,8 @@ busybox                       1.36.1-r15             apk
 busybox-binsh                 1.36.1-r15             apk                    
 bytes                         3.1.2                  npm                    
 c-ares                        1.24.0-r1              apk                    
-ca-certificates               20230506-r0            apk                    
-ca-certificates-bundle        20230506-r0            apk                    
+ca-certificates               20240226-r0            apk                    
+ca-certificates-bundle        20240226-r0            apk                    
 call-bind                     1.0.7                  npm                    
 chalk                         4.1.2                  npm                    
 color-convert                 2.0.1                  npm                    
