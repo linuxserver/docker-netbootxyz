@@ -11,7 +11,7 @@ alpine-baselayout-data        3.4.3-r2               apk
 alpine-keys                   2.4-r1                 apk                    
 alpine-release                3.19.1-r0              apk                    
 ansi-styles                   4.3.0                  npm                    
-apk-tools                     2.14.3-r1              apk                    
+apk-tools                     2.14.4-r0              apk                    
 argparse                      2.0.1                  npm                    
 array-flatten                 1.1.1                  npm                    
 async                         3.2.5                  npm                    
@@ -61,6 +61,7 @@ etag                          1.8.1                  npm
 express                       4.18.2                 npm                    
 filelist                      1.0.4                  npm                    
 finalhandler                  1.2.0                  npm                    
+findutils                     4.9.0-r5               apk                    
 forwarded                     0.2.0                  npm                    
 fresh                         0.5.2                  npm                    
 function-bind                 1.1.2                  npm                    
@@ -88,7 +89,7 @@ libattr                       2.5.1-r5               apk
 libbase64                     0.5.0-r0               apk                    
 libbsd                        0.11.7-r3              apk                    
 libc-utils                    0.7.2-r5               apk                    
-libcrypto3                    3.1.4-r5               apk                    
+libcrypto3                    3.1.4-r6               apk                    
 libcurl                       8.5.0-r0               apk                    
 libgcc                        13.2.1_git20231014-r0  apk                    
 libidn2                       2.3.4-r4               apk                    
@@ -96,7 +97,7 @@ libintl                       0.22.3-r0              apk
 libmd                         1.1.0-r0               apk                    
 libncursesw                   6.4_p20231125-r0       apk                    
 libproc2                      4.0.4-r0               apk                    
-libssl3                       3.1.4-r5               apk                    
+libssl3                       3.1.4-r6               apk                    
 libstdc++                     13.2.1_git20231014-r0  apk                    
 libunistring                  1.1-r2                 apk                    
 linux-pam                     1.5.3-r7               apk                    
