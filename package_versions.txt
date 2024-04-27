@@ -1,5 +1,5 @@
 NAME                          VERSION                TYPE                  
-@socket.io/component-emitter  3.1.1                  npm                    
+@socket.io/component-emitter  3.1.2                  npm                    
 @types/cookie                 0.4.1                  npm                    
 @types/cors                   2.8.17                 npm                    
 @types/node                   20.12.7                npm                    
@@ -72,7 +72,6 @@ has-property-descriptors      1.0.2                  npm
 has-proto                     1.0.3                  npm                    
 has-symbols                   1.0.3                  npm                    
 hasown                        2.0.2                  npm                    
-hiredis                       1.2.0-r0               apk                    
 http                          0.0.0                  npm                    
 http-errors                   2.0.0                  npm                    
 iconv-lite                    0.4.24                 npm                    
@@ -118,7 +117,7 @@ ncurses-terminfo-base         6.4_p20231125-r0       apk
 negotiator                    0.6.3                  npm                    
 netcat-openbsd                1.226-r0               apk                    
 nghttp2-libs                  1.58.0-r0              apk                    
-nginx                         1.24.0-r15             apk                    
+nginx                         1.24.0-r16             apk                    
 node-downloader-helper        2.1.9                  npm                    
 node-fetch                    2.7.0                  npm                    
 nodejs                        20.12.1-r0             apk                    
