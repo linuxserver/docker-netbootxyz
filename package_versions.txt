@@ -2,7 +2,7 @@ NAME                          VERSION                TYPE
 @socket.io/component-emitter  3.1.2                  npm                    
 @types/cookie                 0.4.1                  npm                    
 @types/cors                   2.8.17                 npm                    
-@types/node                   20.12.7                npm                    
+@types/node                   20.12.8                npm                    
 WebApp                        0.7.1                  npm                    
 accepts                       1.3.8                  npm                    
 ada-libs                      2.7.4-r0               apk                    
@@ -80,7 +80,7 @@ icu-libs                      74.1-r0                apk
 inherits                      2.0.4                  npm                    
 ipaddr.js                     1.9.1                  npm                    
 isbinaryfile                  5.0.0                  npm                    
-jake                          10.8.7                 npm                    
+jake                          10.9.1                 npm                    
 jq                            1.7.1-r0               apk                    
 js-yaml                       4.1.0                  npm                    
 libacl                        2.3.1-r4               apk                    
