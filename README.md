@@ -66,7 +66,7 @@ To use this image you need an existing DHCP server where you can set this TFTP s
 #### PFSense
 Services -> DHCP Server
 
-Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section. 
+Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section.
 * check enable
 * Next server- IP used for TFTP Server
 * Default BIOS file name- `netboot.xyz.kpxe`
@@ -76,7 +76,7 @@ Set both the option for \"TFTP Server\" and the options under the Advanced \"Net
 #### OPNsense
 Services -> DHCP Server
 
-Under the Advanced \"Network Booting\" section. 
+Under the Advanced \"Network Booting\" section.
 * check enable
 * Next server- IP of docker host
 * Default BIOS file name- `netboot.xyz.kpxe`
@@ -116,7 +116,7 @@ commit; save
 
 #### Dnsmasq/DD-WRT/Tomato/PIHOLE
 Various locations to set Additional/Custom DNSMASQ options in UI or config files
-Set the following lines: 
+Set the following lines:
 ```
 dhcp-match=set:bios,60,PXEClient:Arch:00000
 dhcp-boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP
@@ -176,6 +176,10 @@ services:
   netbootxyz:
     image: lscr.io/linuxserver/netbootxyz:tftp
     container_name: netbootxyz
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
     ports:
       - 69:69/udp
     restart: unless-stopped
@@ -186,6 +190,9 @@ services:
 ```bash
 docker run -d \
   --name=netbootxyz \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Etc/UTC \
   -p 69:69/udp \
   --restart unless-stopped \
   lscr.io/linuxserver/netbootxyz:tftp
@@ -198,6 +205,9 @@ Containers are configured using parameters passed at runtime (such as those abov
 | Parameter | Function |
 | :----: | --- |
 | `-p 69/udp` | TFTP Port. |
+| `-e PUID=1000` | for UserID - see below for explanation |
+| `-e PGID=1000` | for GroupID - see below for explanation |
+| `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 
 ## Environment variables from files (Docker secrets)
 
@@ -215,6 +225,24 @@ Will set the environment variable `MYVAR` based on the contents of the `/run/sec
 
 For all of our images we provide the ability to override the default umask settings for services started within the containers using the optional `-e UMASK=022` setting.
 Keep in mind umask is not chmod it subtracts from permissions based on it's value it does not add. Please read up [here](https://en.wikipedia.org/wiki/Umask) before asking for support.
+
+## User / Group Identifiers
+
+When using volumes (`-v` flags), permissions issues can arise between the host OS and the container, we avoid this issue by allowing you to specify the user `PUID` and group `PGID`.
+
+Ensure any volume directories on the host are owned by the same user you specify and any permissions issues will vanish like magic.
+
+In this instance `PUID=1000` and `PGID=1000`, to find yours use `id your_user` as below:
+
+```bash
+id your_user
+```
+
+Example output:
+
+```text
+uid=1000(your_user) gid=1000(your_user) groups=1000(your_user)
+```
 
 ## Docker Mods
 
@@ -342,6 +370,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **30.06.24:** - Rebase to Alpine 3.20.
 * **08.12.23:** - Rebase tftp branch to Alpine 3.19.
 * **17.11.23:** - Rebase tftp branch to Alpine 3.18.
 * **01.07.23:** - Deprecate armhf. As announced [here](https://www.linuxserver.io/blog/a-farewell-to-arm-hf)
