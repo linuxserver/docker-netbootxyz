@@ -24,8 +24,8 @@ repo_vars:
   - CI_PORT='3000'
   - CI_SSL='false'
   - CI_DELAY='120'
-  - CI_DOCKERENV='TZ=US/Pacific'
-  - CI_AUTH='user:password'
+  - CI_DOCKERENV=''
+  - CI_AUTH=''
   - CI_WEBPATH=''
 sponsor_links:
   - { name: "netboot.xyz", url: "https://opencollective.com/netbootxyz/donate" }
