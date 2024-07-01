@@ -66,7 +66,7 @@ To use this image you need an existing DHCP server where you can set this TFTP s
 #### PFSense
 Services -> DHCP Server
 
-Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section. 
+Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section.
 * check enable
 * Next server- IP used for TFTP Server
 * Default BIOS file name- `netboot.xyz.kpxe`
@@ -76,7 +76,7 @@ Set both the option for \"TFTP Server\" and the options under the Advanced \"Net
 #### OPNsense
 Services -> DHCP Server
 
-Under the Advanced \"Network Booting\" section. 
+Under the Advanced \"Network Booting\" section.
 * check enable
 * Next server- IP of docker host
 * Default BIOS file name- `netboot.xyz.kpxe`
@@ -116,7 +116,7 @@ commit; save
 
 #### Dnsmasq/DD-WRT/Tomato/PIHOLE
 Various locations to set Additional/Custom DNSMASQ options in UI or config files
-Set the following lines: 
+Set the following lines:
 ```
 dhcp-match=set:bios,60,PXEClient:Arch:00000
 dhcp-boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP
@@ -342,6 +342,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **30.06.24:** - Rebase to Alpine 3.20.
 * **08.12.23:** - Rebase tftp branch to Alpine 3.19.
 * **17.11.23:** - Rebase tftp branch to Alpine 3.18.
 * **01.07.23:** - Deprecate armhf. As announced [here](https://www.linuxserver.io/blog/a-farewell-to-arm-hf)

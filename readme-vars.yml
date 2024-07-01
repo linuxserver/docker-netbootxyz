@@ -13,12 +13,9 @@ available_architectures:
 # container parameters
 common_param_env_vars_enabled: false
 param_container_name: "{{ project_name }}"
-param_usage_include_vols: false
 param_usage_include_ports: true
 param_ports:
   - {external_port: "69", internal_port: "69/udp", port_desc: "TFTP Port."}
-param_usage_include_env: false
-# application setup block
 app_setup_block_enabled: true
 app_setup_block: |
   To use this image you need an existing DHCP server where you can set this TFTP server as your DHCP boot destination. This image does not contain a DHCP server nor do we aim to support one in the future. This is simply a TFTP server hosting the latest IPXE kernel builds from [netboot.xyz]({{ project_url }}). If you are interested in their project and lack the ability to setup a DHCP server to boot this payload they also have USB stick images you can use available on their [downloads page]({{ project_url }}/downloads/).
@@ -28,7 +25,7 @@ app_setup_block: |
   #### PFSense
   Services -> DHCP Server
 
-  Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section. 
+  Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section.
   * check enable
   * Next server- IP used for TFTP Server
   * Default BIOS file name- `netboot.xyz.kpxe`
@@ -38,7 +35,7 @@ app_setup_block: |
   #### OPNsense
   Services -> DHCP Server
 
-  Under the Advanced \"Network Booting\" section. 
+  Under the Advanced \"Network Booting\" section.
   * check enable
   * Next server- IP of docker host
   * Default BIOS file name- `netboot.xyz.kpxe`
@@ -55,7 +52,7 @@ app_setup_block: |
     EdgeOS (shown below) will fully support netboot.
   * For UDM variants, creating a valid dnsmasq config and placing in /run/dnsmasq.conf.d
     will load the config, but will not survive reboots or firmware updates [source](https://community.ui.com/questions/PXE-Network-boot-UDM-SE-Serving-files-conditionally-based-on-architecture/1843fcf6-87d5-4305-bc1d-4e55619ebb10).
-  
+
   #### EdgeOS/VyOS
   Connect via SSH
   ```
@@ -75,10 +72,10 @@ app_setup_block: |
   set service dns forwarding options \"dhcp-boot=tag:efi64-2,netboot.xyz.efi,,SERVERIP\"
   commit; save
   ```
-  
+
   #### Dnsmasq/DD-WRT/Tomato/PIHOLE
   Various locations to set Additional/Custom DNSMASQ options in UI or config files
-  Set the following lines: 
+  Set the following lines:
   ```
   dhcp-match=set:bios,60,PXEClient:Arch:00000
   dhcp-boot=tag:bios,netboot.xyz.kpxe,,YOURSERVERIP
@@ -93,7 +90,7 @@ app_setup_block: |
   dhcp-match=set:efi64-2,60,PXEClient:Arch:00009
   dhcp-boot=tag:efi64-2,netboot.xyz.efi,,YOURSERVERIP
   ```
-  
+
   #### OpenWRT
   ```
   uci set dhcp.@dnsmasq[0].dhcp_match=set:bios,60,PXEClient:Arch:00000
@@ -111,9 +108,9 @@ app_setup_block: |
   uci commit
   /etc/init.d/dnsmasq restart
   ```
-  
+
   #### Microsoft Server DHCP
-  
+
   * Run the DHCP program
   * Under Scope/Scope Options
   * check option 066 and enter the FQDN or IP of your TFTP boot server
@@ -121,13 +118,14 @@ app_setup_block: |
   * Default BIOS file name- netboot.xyz.kpxe
   * UEFI 32 bit file name- netboot.xyz.efi
   * UEFI 64 bit file name- netboot.xyz.efi
-  
+
   Anything else from a router standpoint is a crapshoot for supporting Dnsmasq options or proprietary PXE boot options, check Google for support (try your exact router model number with 'pxe boot') or look into setting up your own DHCP server in Linux.
-  
-  This image also contains `netboot.xyz.efi` which can be used to boot using UEFI network boot. The UEFI boot and menu will have limited functionality if you choose to use it. 
+
+  This image also contains `netboot.xyz.efi` which can be used to boot using UEFI network boot. The UEFI boot and menu will have limited functionality if you choose to use it.
 
 # changelog
 changelogs:
+  - {date: "30.06.24:", desc: "Rebase to Alpine 3.20."}
   - {date: "08.12.23:", desc: "Rebase tftp branch to Alpine 3.19."}
   - {date: "17.11.23:", desc: "Rebase tftp branch to Alpine 3.18."}
   - {date: "01.07.23:", desc: "Deprecate armhf. As announced [here](https://www.linuxserver.io/blog/a-farewell-to-arm-hf)"}
