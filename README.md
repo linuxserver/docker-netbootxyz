@@ -176,10 +176,6 @@ services:
   netbootxyz:
     image: lscr.io/linuxserver/netbootxyz:tftp
     container_name: netbootxyz
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
     ports:
       - 69:69/udp
     restart: unless-stopped
@@ -190,9 +186,6 @@ services:
 ```bash
 docker run -d \
   --name=netbootxyz \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=Etc/UTC \
   -p 69:69/udp \
   --restart unless-stopped \
   lscr.io/linuxserver/netbootxyz:tftp
@@ -205,9 +198,6 @@ Containers are configured using parameters passed at runtime (such as those abov
 | Parameter | Function |
 | :----: | --- |
 | `-p 69/udp` | TFTP Port. |
-| `-e PUID=1000` | for UserID - see below for explanation |
-| `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 
 ## Environment variables from files (Docker secrets)
 
@@ -225,24 +215,6 @@ Will set the environment variable `MYVAR` based on the contents of the `/run/sec
 
 For all of our images we provide the ability to override the default umask settings for services started within the containers using the optional `-e UMASK=022` setting.
 Keep in mind umask is not chmod it subtracts from permissions based on it's value it does not add. Please read up [here](https://en.wikipedia.org/wiki/Umask) before asking for support.
-
-## User / Group Identifiers
-
-When using volumes (`-v` flags), permissions issues can arise between the host OS and the container, we avoid this issue by allowing you to specify the user `PUID` and group `PGID`.
-
-Ensure any volume directories on the host are owned by the same user you specify and any permissions issues will vanish like magic.
-
-In this instance `PUID=1000` and `PGID=1000`, to find yours use `id your_user` as below:
-
-```bash
-id your_user
-```
-
-Example output:
-
-```text
-uid=1000(your_user) gid=1000(your_user) groups=1000(your_user)
-```
 
 ## Docker Mods
 
