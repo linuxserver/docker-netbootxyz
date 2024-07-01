@@ -175,7 +175,7 @@ services:
       - NGINX_PORT=80 #optional
       - WEB_APP_PORT=3000 #optional
     volumes:
-      - /path/to/config:/config
+      - /path/to/netbootxyz/config:/config
       - /path/to/assets:/assets #optional
     ports:
       - 3000:3000
@@ -200,7 +200,7 @@ docker run -d \
   -p 3000:3000 \
   -p 69:69/udp \
   -p 8080:80 `#optional` \
-  -v /path/to/config:/config \
+  -v /path/to/netbootxyz/config:/config \
   -v /path/to/assets:/assets `#optional` \
   --restart unless-stopped \
   lscr.io/linuxserver/netbootxyz:latest
@@ -220,7 +220,7 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e MENU_VERSION=1.9.9` | Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest) |
 | `-e PORT_RANGE=30000:30010` | Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details) |
-| `-e SUBFOLDER=/` | Specify a sobfolder if running this behind a reverse proxy (IE /proxy/) |
+| `-e SUBFOLDER=/` | Specify a subfolder if running this behind a reverse proxy (IE /proxy/) |
 | `-e NGINX_PORT=80` | Specify a different internal port for the asset server |
 | `-e WEB_APP_PORT=3000` | Specify a different internal port for the configuration UI |
 | `-v /config` | Storage for boot menu files and web application config |
@@ -387,6 +387,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **30.06.24:** - Rebase to Alpine 3.20.
 * **24.02.24:** - Add new port settings for the webserver and app.
 * **08.12.23:** - Rebase to Alpine 3.19.
 * **17.11.23:** - Rebase to Alpine 3.18.

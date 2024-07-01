@@ -20,18 +20,17 @@ common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_vols: true
 param_volumes:
-  - {vol_path: "/config", vol_host_path: "/path/to/config", desc: "Storage for boot menu files and web application config"}
+  - {vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/config", desc: "Storage for boot menu files and web application config"}
 param_usage_include_ports: true
 param_ports:
   - {external_port: "3000", internal_port: "3000", port_desc: "Web configuration interface."}
   - {external_port: "69", internal_port: "69/udp", port_desc: "TFTP Port."}
-param_usage_include_env: false
 # optional env variables
 opt_param_usage_include_env: true
 opt_param_env_vars:
   - {env_var: "MENU_VERSION", env_value: "1.9.9", desc: "Specify a specific version of boot files you want to use from NETBOOT.XYZ (unset pulls latest)"}
   - {env_var: "PORT_RANGE", env_value: "30000:30010", desc: "Specify the port range tftp will use for data transfers [(see Wikipedia)](https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol#Details)"}
-  - {env_var: "SUBFOLDER", env_value: "/", desc: "Specify a sobfolder if running this behind a reverse proxy (IE /proxy/)"}
+  - {env_var: "SUBFOLDER", env_value: "/", desc: "Specify a subfolder if running this behind a reverse proxy (IE /proxy/)"}
   - {env_var: "NGINX_PORT", env_value: "80", desc: "Specify a different internal port for the asset server"}
   - {env_var: "WEB_APP_PORT", env_value: "3000", desc: "Specify a different internal port for the configuration UI"}
 opt_param_usage_include_ports: true
@@ -130,6 +129,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - {date: "30.06.24:", desc: "Rebase to Alpine 3.20."}
   - {date: "24.02.24:", desc: "Add new port settings for the webserver and app."}
   - {date: "08.12.23:", desc: "Rebase to Alpine 3.19."}
   - {date: "17.11.23:", desc: "Rebase to Alpine 3.18."}
