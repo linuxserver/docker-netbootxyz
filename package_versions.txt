@@ -2,14 +2,14 @@ NAME                          VERSION                TYPE
 @socket.io/component-emitter  3.1.2                  npm                    
 @types/cookie                 0.4.1                  npm                    
 @types/cors                   2.8.17                 npm                    
-@types/node                   20.14.12               npm                    
+@types/node                   22.1.0                 npm                    
 WebApp                        0.7.1                  npm                    
 accepts                       1.3.8                  npm                    
 ada-libs                      2.7.8-r0               apk                    
 alpine-baselayout             3.6.5-r0               apk                    
 alpine-baselayout-data        3.6.5-r0               apk                    
 alpine-keys                   2.4-r1                 apk                    
-alpine-release                3.20.1-r0              apk                    
+alpine-release                3.20.2-r0              apk                    
 ansi-styles                   4.3.0                  npm                    
 apk-tools                     2.14.4-r0              apk                    
 argparse                      2.0.1                  npm                    
@@ -44,9 +44,9 @@ coreutils-env                 9.5-r1                 apk
 coreutils-fmt                 9.5-r1                 apk                    
 coreutils-sha512sum           9.5-r1                 apk                    
 cors                          2.8.5                  npm                    
-curl                          8.8.0-r0               apk                    
+curl                          8.9.0-r0               apk                    
 debug                         2.6.9                  npm                    
-debug                         4.3.5                  npm   (+3 duplicates)  
+debug                         4.3.6                  npm   (+3 duplicates)  
 define-data-property          1.1.4                  npm                    
 depd                          2.0.0                  npm                    
 destroy                       1.2.0                  npm                    
@@ -89,7 +89,7 @@ libattr                       2.5.2-r0               apk
 libbase64                     0.5.2-r0               apk                    
 libbsd                        0.12.2-r0              apk                    
 libcrypto3                    3.3.1-r3               apk                    
-libcurl                       8.8.0-r0               apk                    
+libcurl                       8.9.0-r0               apk                    
 libgcc                        13.2.1_git20240309-r0  apk                    
 libidn2                       2.3.7-r0               apk                    
 libintl                       0.22.5-r0              apk                    
@@ -159,7 +159,7 @@ toidentifier                  1.0.1                  npm
 tr46                          0.0.3                  npm                    
 type-is                       1.6.18                 npm                    
 tzdata                        2024a-r1               apk                    
-undici-types                  5.26.5                 npm                    
+undici-types                  6.13.0                 npm                    
 unpipe                        1.0.0                  npm                    
 utils-merge                   1.0.1                  npm                    
 utmps-libs                    0.1.2.2-r1             apk                    
