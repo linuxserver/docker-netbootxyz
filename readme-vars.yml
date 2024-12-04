@@ -49,7 +49,7 @@ app_setup_block: |
   #### PFSense
   Services -> DHCP Server
 
-  Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section.\n
+  Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section.
   * check enable
   * Next server- IP used for TFTP Server
   * Default BIOS file name- `netboot.xyz.kpxe`
