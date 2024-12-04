@@ -75,7 +75,7 @@ To use this image you need an existing DHCP server where you can set this TFTP s
 #### PFSense
 Services -> DHCP Server
 
-Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section.\n
+Set both the option for \"TFTP Server\" and the options under the Advanced \"Network Booting\" section.
 * check enable
 * Next server- IP used for TFTP Server
 * Default BIOS file name- `netboot.xyz.kpxe`
@@ -153,10 +153,12 @@ Ensure you restart the DNSMASQ service after the changes.
 Anything else from a router standpoint is a crapshoot for supporting Dnsmasq options or proprietary PXE boot options, check Google for support (try your exact router model number with 'pxe boot') or look into setting up your own DHCP server in Linux.
 This image also contains `netboot.xyz.efi` which can be used to boot using UEFI network boot. The UEFI boot and menu will have limited functionality if you choose to use it.
 
- 
 ## Usage
 
 To help you get started creating a container from this image you can either use docker-compose or the docker cli.
+
+>[!NOTE]
+>Unless a parameter is flaged as 'optional', it is *mandatory* and a value must be provided.
 
 ### docker-compose (recommended, [click here for more info](https://docs.linuxserver.io/general/docker-compose))
 
@@ -213,8 +215,8 @@ Containers are configured using parameters passed at runtime (such as those abov
 
 | Parameter | Function |
 | :----: | --- |
-| `-p 3000` | Web configuration interface. |
-| `-p 69/udp` | TFTP Port. |
+| `-p 3000:3000` | Web configuration interface. |
+| `-p 69:69/udp` | TFTP Port. |
 | `-p 80` | NGINX server for hosting assets. |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
