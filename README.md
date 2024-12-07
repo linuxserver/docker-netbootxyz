@@ -164,10 +164,12 @@ Anything else from a router standpoint is a crapshoot for supporting Dnsmasq opt
 
 This image also contains `netboot.xyz.efi` which can be used to boot using UEFI network boot. The UEFI boot and menu will have limited functionality if you choose to use it.
 
- 
 ## Usage
 
 To help you get started creating a container from this image you can either use docker-compose or the docker cli.
+
+>[!NOTE]
+>Unless a parameter is flaged as 'optional', it is *mandatory* and a value must be provided.
 
 ### docker-compose (recommended, [click here for more info](https://docs.linuxserver.io/general/docker-compose))
 
@@ -198,7 +200,7 @@ Containers are configured using parameters passed at runtime (such as those abov
 
 | Parameter | Function |
 | :----: | --- |
-| `-p 69/udp` | TFTP Port. |
+| `-p 69:69/udp` | TFTP Port. |
 
 ## Environment variables from files (Docker secrets)
 
