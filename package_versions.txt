@@ -3,7 +3,7 @@ NAME                          VERSION                TYPE
 @socket.io/component-emitter  UNKNOWN                npm   (+1 duplicate)   
 @types/cookie                 0.4.1                  npm                    
 @types/cors                   2.8.17                 npm                    
-@types/node                   22.10.1                npm                    
+@types/node                   22.10.2                npm                    
 WebApp                        0.7.3                  npm                    
 accepts                       1.3.8                  npm                    
 ada-libs                      2.7.8-r0               apk                    
@@ -30,7 +30,8 @@ c-ares                        1.33.1-r0              apk
 ca-certificates               20240705-r0            apk                    
 ca-certificates-bundle        20240705-r0            apk                    
 call-bind                     1.0.8                  npm                    
-call-bind-apply-helpers       1.0.0                  npm                    
+call-bind-apply-helpers       1.0.1                  npm                    
+call-bound                    1.0.2                  npm                    
 catatonit                     0.2.0-r0               apk                    
 chalk                         4.1.2                  npm                    
 color-convert                 2.0.1                  npm                    
@@ -61,6 +62,7 @@ engine.io-parser              5.2.3                  npm
 engine.io-parser              UNKNOWN                npm   (+1 duplicate)   
 es-define-property            1.0.1                  npm                    
 es-errors                     1.3.0                  npm                    
+es-object-atoms               1.0.0                  npm                    
 escape-html                   1.0.3                  npm                    
 etag                          1.8.1                  npm                    
 express                       4.19.2                 npm                    
@@ -70,7 +72,7 @@ findutils                     4.9.0-r5               apk
 forwarded                     0.2.0                  npm                    
 fresh                         0.5.2                  npm                    
 function-bind                 1.1.2                  npm                    
-get-intrinsic                 1.2.5                  npm                    
+get-intrinsic                 1.2.6                  npm                    
 gopd                          1.2.0                  npm                    
 has-flag                      4.0.0                  npm                    
 has-property-descriptors      1.0.2                  npm                    
@@ -104,6 +106,7 @@ libssl3                       3.3.2-r1               apk
 libstdc++                     13.2.1_git20240309-r0  apk                    
 libunistring                  1.2-r0                 apk                    
 linux-pam                     1.6.0-r0               apk                    
+math-intrinsics               1.0.0                  npm                    
 media-typer                   0.3.0                  npm                    
 merge-descriptors             1.0.1                  npm                    
 methods                       1.1.2                  npm                    
@@ -147,7 +150,10 @@ serve-static                  1.15.0                 npm
 set-function-length           1.2.2                  npm                    
 setprototypeof                1.2.0                  npm                    
 shadow                        4.15.1-r0              apk                    
-side-channel                  1.0.6                  npm                    
+side-channel                  1.1.0                  npm                    
+side-channel-list             1.0.0                  npm                    
+side-channel-map              1.0.1                  npm                    
+side-channel-weakmap          1.0.2                  npm                    
 skalibs                       2.14.1.1-r0            apk                    
 socket.io                     4.7.5                  npm                    
 socket.io-adapter             2.5.5                  npm                    
