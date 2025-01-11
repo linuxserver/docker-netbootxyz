@@ -10,7 +10,7 @@ ada-libs                      2.7.8-r0               apk
 alpine-baselayout             3.6.5-r0               apk                    
 alpine-baselayout-data        3.6.5-r0               apk                    
 alpine-keys                   2.4-r1                 apk                    
-alpine-release                3.20.3-r0              apk                    
+alpine-release                3.20.5-r0              apk                    
 ansi-styles                   4.3.0                  npm                    
 apk-tools                     2.14.4-r1              apk                    
 argparse                      2.0.1                  npm                    
@@ -27,8 +27,8 @@ busybox                       1.36.1-r29             apk
 busybox-binsh                 1.36.1-r29             apk                    
 bytes                         3.1.2                  npm                    
 c-ares                        1.33.1-r0              apk                    
-ca-certificates               20240705-r0            apk                    
-ca-certificates-bundle        20240705-r0            apk                    
+ca-certificates               20241121-r1            apk                    
+ca-certificates-bundle        20241121-r1            apk                    
 call-bind-apply-helpers       1.0.1                  npm                    
 call-bound                    1.0.3                  npm                    
 catatonit                     0.2.0-r0               apk                    
@@ -41,10 +41,10 @@ content-type                  1.0.5                  npm
 cookie                        0.4.2                  npm                    
 cookie                        0.6.0                  npm                    
 cookie-signature              1.0.6                  npm                    
-coreutils                     9.5-r1                 apk                    
-coreutils-env                 9.5-r1                 apk                    
-coreutils-fmt                 9.5-r1                 apk                    
-coreutils-sha512sum           9.5-r1                 apk                    
+coreutils                     9.5-r2                 apk                    
+coreutils-env                 9.5-r2                 apk                    
+coreutils-fmt                 9.5-r2                 apk                    
+coreutils-sha512sum           9.5-r2                 apk                    
 cors                          2.8.5                  npm                    
 curl                          8.11.1-r0              apk                    
 debug                         2.6.9                  npm                    
@@ -72,6 +72,7 @@ fresh                         0.5.2                  npm
 function-bind                 1.1.2                  npm                    
 get-intrinsic                 1.2.7                  npm                    
 get-proto                     1.0.1                  npm                    
+gmp                           6.3.0-r1               apk                    
 gopd                          1.2.0                  npm                    
 has-flag                      4.0.0                  npm                    
 has-symbols                   1.1.0                  npm                    
