@@ -3,7 +3,7 @@ NAME                          VERSION                TYPE
 @socket.io/component-emitter  UNKNOWN                npm   (+1 duplicate)   
 @types/cookie                 0.4.1                  npm                    
 @types/cors                   2.8.17                 npm                    
-@types/node                   22.10.5                npm                    
+@types/node                   22.10.7                npm                    
 WebApp                        0.7.3                  npm                    
 accepts                       1.3.8                  npm                    
 ada-libs                      2.7.8-r0               apk                    
@@ -60,7 +60,7 @@ engine.io-parser              5.2.3                  npm
 engine.io-parser              UNKNOWN                npm   (+1 duplicate)   
 es-define-property            1.0.1                  npm                    
 es-errors                     1.3.0                  npm                    
-es-object-atoms               1.0.0                  npm                    
+es-object-atoms               1.1.1                  npm                    
 escape-html                   1.0.3                  npm                    
 etag                          1.8.1                  npm                    
 express                       4.19.2                 npm                    
