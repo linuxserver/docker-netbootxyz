@@ -6,6 +6,7 @@ project_url: "https://netboot.xyz"
 project_logo: "https://netboot.xyz/images/netboot.xyz.gif"
 project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is a way to PXE boot various operating system installers or utilities from one place within the BIOS without the need of having to go retrieve the media to run the tool. iPXE is used to provide a user friendly menu from within the BIOS that lets you easily choose the operating system you want along with any specific types of versions or bootable flags."
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
+project_categories: "Administration"
 # supported architectures
 available_architectures:
   - {arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
