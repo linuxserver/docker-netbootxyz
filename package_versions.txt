@@ -1,10 +1,9 @@
 NAME                          VERSION                TYPE                  
 @socket.io/component-emitter  3.1.2                  npm                    
 @socket.io/component-emitter  UNKNOWN                npm   (+1 duplicate)   
-@types/cookie                 0.4.1                  npm                    
 @types/cors                   2.8.17                 npm                    
 @types/node                   22.13.0                npm                    
-WebApp                        0.7.3                  npm                    
+WebApp                        0.7.4                  npm                    
 accepts                       1.3.8                  npm                    
 ada-libs                      2.7.8-r0               apk                    
 alpine-baselayout             3.6.5-r0               apk                    
@@ -19,7 +18,7 @@ async                         3.2.6                  npm
 balanced-match                1.0.2                  npm                    
 base64id                      2.0.0                  npm                    
 bash                          5.2.26-r0              apk                    
-body-parser                   1.20.2                 npm                    
+body-parser                   1.20.3                 npm                    
 brace-expansion               1.1.11                 npm                    
 brace-expansion               2.0.1                  npm                    
 brotli-libs                   1.1.0-r2               apk                    
@@ -38,8 +37,8 @@ color-name                    1.1.4                  npm
 concat-map                    0.0.1                  npm                    
 content-disposition           0.5.4                  npm                    
 content-type                  1.0.5                  npm                    
-cookie                        0.4.2                  npm                    
-cookie                        0.6.0                  npm                    
+cookie                        0.7.1                  npm                    
+cookie                        0.7.2                  npm                    
 cookie-signature              1.0.6                  npm                    
 coreutils                     9.5-r2                 apk                    
 coreutils-env                 9.5-r2                 apk                    
@@ -55,7 +54,8 @@ dunder-proto                  1.0.1                  npm
 ee-first                      1.1.1                  npm                    
 ejs                           3.1.10                 npm                    
 encodeurl                     1.0.2                  npm                    
-engine.io                     6.5.5                  npm                    
+encodeurl                     2.0.0                  npm                    
+engine.io                     6.6.4                  npm                    
 engine.io-parser              5.2.3                  npm                    
 engine.io-parser              UNKNOWN                npm   (+1 duplicate)   
 es-define-property            1.0.1                  npm                    
@@ -63,9 +63,9 @@ es-errors                     1.3.0                  npm
 es-object-atoms               1.1.1                  npm                    
 escape-html                   1.0.3                  npm                    
 etag                          1.8.1                  npm                    
-express                       4.19.2                 npm                    
+express                       4.21.2                 npm                    
 filelist                      1.0.4                  npm                    
-finalhandler                  1.2.0                  npm                    
+finalhandler                  1.3.1                  npm                    
 findutils                     4.9.0-r5               apk                    
 forwarded                     0.2.0                  npm                    
 fresh                         0.5.2                  npm                    
@@ -84,7 +84,7 @@ icu-data-en                   74.2-r0                apk
 icu-libs                      74.2-r0                apk                    
 inherits                      2.0.4                  npm                    
 ipaddr.js                     1.9.1                  npm                    
-isbinaryfile                  5.0.2                  npm                    
+isbinaryfile                  5.0.4                  npm                    
 jake                          10.9.2                 npm                    
 jq                            1.7.1-r0               apk                    
 js-yaml                       4.1.0                  npm                    
@@ -107,7 +107,7 @@ libunistring                  1.2-r0                 apk
 linux-pam                     1.6.0-r0               apk                    
 math-intrinsics               1.1.0                  npm                    
 media-typer                   0.3.0                  npm                    
-merge-descriptors             1.0.1                  npm                    
+merge-descriptors             1.0.3                  npm                    
 methods                       1.1.2                  npm                    
 mime                          1.6.0                  npm                    
 mime-db                       1.52.0                 npm                    
@@ -131,12 +131,12 @@ object-inspect                1.13.3                 npm
 on-finished                   2.4.1                  npm                    
 oniguruma                     6.9.9-r0               apk                    
 parseurl                      1.3.3                  npm                    
-path-to-regexp                0.1.7                  npm                    
+path-to-regexp                0.1.12                 npm                    
 pcre                          8.45-r3                apk                    
 picomatch                     2.3.1                  npm                    
 procps-ng                     4.0.4-r0               apk                    
 proxy-addr                    2.0.7                  npm                    
-qs                            6.11.0                 npm                    
+qs                            6.13.0                 npm                    
 range-parser                  1.2.1                  npm                    
 raw-body                      2.5.2                  npm                    
 readdirp                      3.6.0                  npm                    
@@ -144,8 +144,8 @@ readline                      8.2.10-r0              apk
 safe-buffer                   5.2.1                  npm                    
 safer-buffer                  2.1.2                  npm                    
 scanelf                       1.3.7-r2               apk                    
-send                          0.18.0                 npm                    
-serve-static                  1.15.0                 npm                    
+send                          0.19.0                 npm                    
+serve-static                  1.16.2                 npm                    
 setprototypeof                1.2.0                  npm                    
 shadow                        4.15.1-r0              apk                    
 side-channel                  1.1.0                  npm                    
@@ -153,13 +153,13 @@ side-channel-list             1.0.0                  npm
 side-channel-map              1.0.1                  npm                    
 side-channel-weakmap          1.0.2                  npm                    
 skalibs                       2.14.1.1-r0            apk                    
-socket.io                     4.7.5                  npm                    
+socket.io                     4.8.1                  npm                    
 socket.io-adapter             2.5.5                  npm                    
 socket.io-parser              4.2.4                  npm                    
 ssl_client                    1.36.1-r29             apk                    
 statuses                      2.0.1                  npm                    
 supports-color                7.2.0                  npm                    
-systeminformation             5.23.3                 npm                    
+systeminformation             5.25.11                npm                    
 tftp-hpa                      5.2-r7                 apk                    
 toidentifier                  1.0.1                  npm                    
 tr46                          0.0.3                  npm                    
