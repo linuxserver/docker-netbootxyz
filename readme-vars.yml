@@ -10,7 +10,7 @@ project_categories: "Administration,Network"
 
 # deprecation information
 project_deprecation_status: true
-project_deprecation_message: "Consider switching to https://github.com/netbootxyz/docker-netbootxyz for the official container which is a drop-in replacement.""
+project_deprecation_message: "Consider switching to https://github.com/netbootxyz/docker-netbootxyz for the official container which is a drop-in replacement."
 
 # supported architectures
 available_architectures:
