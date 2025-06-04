@@ -68,11 +68,18 @@ app_setup_block: |
   * UEFI 64 bit file name- `netboot.xyz.efi`
 
   #### Unifi Security Gateway (with the controller)
-  Networks -> LAN (or the network you want to boot from) -> ADVANCED DHCP OPTIONS
-  * tick Enable network boot
-  * Server-  YOURSERVERIP
-  * Filename- `netboot.xyz.kpxe`
-  Advanced full support
+  Go to Settings -> Networks -> LAN (or the network you want to boot from). Find DHCP Service Management and click "Show Options" to expand that section and set these options:
+
+  * Tick "Network Boot"
+  * Server - YOURSERVERIP
+  * Filename - set to one of the following, based on the type of the machines you're installing:
+    * UEFI (32 or 64 bit) - `netboot.xyz.efi`
+    * BIOS - `netboot.xyz.kpxe`
+
+
+  #### Unifi Security Gateway (Using SSH)
+
+  As an alternative to the Unifi controller, you may use SSH to create or modify the config files directly. This allows for more configuration than the UI:
   * For USG variants force provisioning a json containing the same config used for EdgeOS (shown below) will fully support netboot.
   * For UDM variants, creating a valid dnsmasq config and placing in /run/dnsmasq.conf.d will load the config, but will not survive reboots or firmware updates [source](https://community.ui.com/questions/PXE-Network-boot-UDM-SE-Serving-files-conditionally-based-on-architecture/1843fcf6-87d5-4305-bc1d-4e55619ebb10).
 
