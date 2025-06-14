@@ -72,7 +72,7 @@ NAME                                               VERSION                TYPE
 @pkgjs/parseargs                                   0.11.0                 npm                     
 @pkgr/core                                         0.2.7                  npm                     
 @sinclair/typebox                                  0.27.8                 npm   (+2 duplicates)   
-@sinclair/typebox                                  0.34.33                npm                     
+@sinclair/typebox                                  0.34.35                npm                     
 @sinonjs/commons                                   3.0.1                  npm                     
 @sinonjs/fake-timers                               13.0.5                 npm                     
 @socket.io/component-emitter                       3.1.2                  npm                     
@@ -140,7 +140,7 @@ call-bound                                         1.0.4                  npm
 callsites                                          3.1.0                  npm                     
 camelcase                                          5.3.1                  npm                     
 camelcase                                          6.3.0                  npm                     
-caniuse-lite                                       1.0.30001722           npm                     
+caniuse-lite                                       1.0.30001723           npm                     
 catatonit                                          0.2.0-r0               apk                     
 chalk                                              4.1.2                  npm                     
 char-regex                                         1.0.2                  npm                     
@@ -184,7 +184,7 @@ dunder-proto                                       1.0.1                  npm
 eastasianwidth                                     0.2.0                  npm                     
 ee-first                                           1.1.1                  npm                     
 ejs                                                3.1.10                 npm                     
-electron-to-chromium                               1.5.166                npm                     
+electron-to-chromium                               1.5.167                npm                     
 emittery                                           0.13.1                 npm                     
 emoji-regex                                        8.0.0                  npm   (+3 duplicates)   
 emoji-regex                                        9.2.2                  npm                     
