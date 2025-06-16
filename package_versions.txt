@@ -86,7 +86,7 @@ NAME                                               VERSION                TYPE
 @types/istanbul-lib-report                         3.0.3                  npm                     
 @types/istanbul-reports                            3.0.4                  npm                     
 @types/jest                                        29.5.14                npm                     
-@types/node                                        24.0.1                 npm                     
+@types/node                                        24.0.3                 npm                     
 @types/stack-utils                                 2.0.3                  npm                     
 @types/yargs                                       17.0.33                npm                     
 @types/yargs-parser                                21.0.3                 npm                     
@@ -184,7 +184,7 @@ dunder-proto                                       1.0.1                  npm
 eastasianwidth                                     0.2.0                  npm                     
 ee-first                                           1.1.1                  npm                     
 ejs                                                3.1.10                 npm                     
-electron-to-chromium                               1.5.167                npm                     
+electron-to-chromium                               1.5.168                npm                     
 emittery                                           0.13.1                 npm                     
 emoji-regex                                        8.0.0                  npm   (+3 duplicates)   
 emoji-regex                                        9.2.2                  npm                     
